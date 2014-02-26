@@ -1,4 +1,4 @@
 class Item < ActiveRecord::Base
-  belongs_to :tweet
+  belongs_to :post
   has_one :itemtype
 end

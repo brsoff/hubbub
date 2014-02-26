@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :tweets
+  has_many :posts
   has_many :watchlists
   has_many :followers, through: :follows, source: :followed
   has_many :followed, through: :follows, source: :follower

@@ -7,6 +7,10 @@ gem 'rails', '4.0.2'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'devise'
+gem 'pry-rails'
+gem 'capybara'
+gem 'rspec-rails'
+gem 'factory_girl_rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

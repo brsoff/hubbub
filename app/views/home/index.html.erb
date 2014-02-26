@@ -1,10 +1,21 @@
 <% if current_user %>
-<%= current_user.name %>
-<% else %>
-<% end %>
 
+<%= current_user.name %>
 <h1>Welcome</h1>
 
+<%= form_for @post do |f| %>
+  <%= f.text_area :message, placeholder: "message", :maxlength => 70 %><br>
+  <%= f.collection_select :id, @itemtypes, :id, :name %><br>
+    <%= form_for @item do |f| %>
+      <%= f.text_field :name, placeholder: "name" %><br>
+      <%= f.text_field :url, placeholder: "link" %><br>
+    <% end %>
+  <%= f.submit %>
+<% end %>
+
+
+
+<% else %>
 <div id="sign_up">
   <h2>Sign up</h2>
 
@@ -31,3 +42,5 @@
 
 <%= render "devise/shared/links" %>
 </div>
+<% end %>
+

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "user registration" do 
+describe "user registration" do
 
-  before do 
+  before do
     visit root_path
     fill_in "Name", with: "Bob Bobertson"
     fill_in "Username", with: ""
@@ -18,22 +18,22 @@ describe "user registration" do
   end
 end
 
-describe "user login" do 
+describe "user login" do
 
   describe "enters username/password and submits"
-    before do 
+  before do
 
-      @user = FactoryGirl.create(:user)
-      visit root_path
-      click_on "Sign in"
-      fill_in "Email", with: @user.email
-      fill_in "Password", with: @user.password
-      find_button("Sign in").click
-    end
+    @user = FactoryGirl.create(:user)
+    visit root_path
+    click_on "Sign in"
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: @user.password
+    find_button("Sign in").click
+  end
 
-    it "should log them in" do 
-      page.current_path.should == root_path
-      page.should have_content("Welcome")
-    end
+  it "should log them in" do
+    page.current_path.should == root_path
+    page.should have_content("Sign Out")
+  end
 
 end

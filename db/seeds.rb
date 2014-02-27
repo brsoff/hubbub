@@ -31,7 +31,6 @@ p = Post.create(message: "Great sandwiches!")
 i.post_id = p.id
 i.save!
 
-p.item_id = i.id
 p.user_id = u.id
 p.save!
 

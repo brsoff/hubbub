@@ -1,70 +1,134 @@
 
 Post = Backbone.Model.extend({
+  defaults: {
+    message: "",
+    user_id: ""
 
 
-})
-
-PostsListView = Backbone.View.extend({
-
-  initialize: function () {
-    this.views = [];
-  },
-
-  render: function () {
-    var self = this;
-    $(".container.main").append(self.$el)
-    self.$el.empty();
-
-    _.each(self.collection.models, function (post) {
-      var post_view = new PostView ({
-        model: post
-      });
-
-      self.$el.append(post_view.$el)
-
-      self.views.push(post)
-    })
-  },
-
-  el: function () {
-    $postsContainer = $('<div id="posts_container">')
-    return $postsContainer;
   }
 
-
 })
+
+// PostsListView = Backbone.View.extend({
+
+//   initialize: function () {
+//     this.views = [];
+//   },
+
+//   render: function () {
+//     var self = this;
+//     $(".container.main").append(self.$el)
+//     self.$el.empty();
+
+//     _.each(self.collection.models, function (post) {
+//       var post_view = new PostView ({
+//         model: post
+//       });
+
+//       self.$el.append(post_view.$el)
+
+//       self.views.push(post)
+//     })
+//   },
+
+//   el: function () {
+//     $postsContainer = $('<div id="posts_container">')
+//     return $postsContainer;
+//   }
+
+
+// })
 
 PostsCollection = Backbone.Collection.extend({
 
-  initialize:function () {
-    this.bind("all", function () {
-      postsListView.render();
-    })
+  url: '/posts',
+
+  model: Post,
+
+  initialize: function(){
+    this.on('remove', this.hideModel, this);
   },
 
-  url: "/posts",
+  hideModel: function(model){
+    model.trigger('hide');
+  },
 
-  model: Post
-})
+  focusOnpost: function(id) {
+    var modelsToRemove = this.filter(function(post){
+      return post.id != id;
+    });
+
+    this.remove(modelsToRemove);
+  }
+
+
+
+});
 
 PostView = Backbone.View.extend({
 
   initialize: function () {
-    this.render();
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove)
+  },
+
+  events: {
+    'click .destroy': 'delete',
+    'click .update': 'edit',
   },
 
   template: function (attrs) {
+    console.log("is this working?")
+    console.log(attrs)
     var source = $("#post_view").html();
     var template = Handlebars.compile(source);
     var templateData = template(attrs);
     return templateData;
   },
 
-  render: function () {
-    this.$el.html(this.template(this.model.attributes))
+  render: function (){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+
+  },
+
+  delete: function (){
+    console.log("I was called!")
+    this.model.destroy();
+  },
+
+  edit: function (){
+    console.log("edit was called!");
+    input = this.$('.edit');
+    this.model.set({name: input.val()}).save();
+  },
+
+});
+
+PostsView = Backbone.View.extend({
+
+  initialize: function(){
+    this.collection.on('add', this.addOne, this);
+    this.collection.on('reset', this.addAll, this);
+  },
+
+  render: function (){
+    this.addAll()
+    return this;
+  },
+
+  addAll: function(){
+    this.$el.empty();
+    this.collection.forEach(this.addOne, this);
+  },
+
+  addOne: function(postItem){
+    var postView = new PostView({model: postItem});
+    console.log(this.$el);
+    this.$el.append(postView.render().el);
   }
 
-})
+});
 
 FormView = Backbone.View.extend({
 
@@ -107,12 +171,51 @@ FormView = Backbone.View.extend({
 })
 
 
+PostRouter = Backbone.Router.extend({
+routes: {
+    "": "index"
+    // "posts/:id": "show",
+    // "posts/:id/edit": "edit",
+    // "posts/new" : "newpost"
+  },
 
-$(function () {
+  initialize: function(){
+    this.posts = new PostsCollection();
+    console.log("loading posts")
+    console.log(this.posts);
+    this.postsView = new PostsView({collection: this.posts});
+    console.log("Postsview")
+    console.log(this.postsView);
+  },
 
-window.list = new PostsCollection ();
-window.postsListView = new PostsListView ({collection: list}); //render posts
-window.postsListView.collection.fetch();
-window.form_view = new FormView();
+  index: function(){
+    console.log("this is the postsview and the cotnacts view el")
+    console.log(this.postsView);
+    console.log(this.postsView.el);
+    this.posts.fetch();
+    $('#posts').html(this.postsView.render().el);
+    var postForm = new FormView();
+    
+  },
 
-})
+  start: function(){
+    Backbone.history.start();
+  },
+
+  show: function(id){
+    this.posts.focusOnpost(id);
+  },
+
+  edit: function (id){
+    var postForm = new formView({model: this.posts.get(id)});
+    $('#posts').html(postForm.render().el);
+
+
+  }
+});
+
+$(function(){
+  app = new PostRouter;
+  app.start();
+
+});

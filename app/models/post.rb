@@ -33,3 +33,4 @@ class Post < ActiveRecord::Base
   # "post"=>{"message"=>"omg does this work"}}
 
 end
+

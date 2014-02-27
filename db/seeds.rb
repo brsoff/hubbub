@@ -17,21 +17,21 @@ Itemtype.create(name: "Book")
 Itemtype.create(name: "Movie")
 Itemtype.create(name: "TV Show")
 Itemtype.create(name: "Product")
-r = Itemtype.create(name: "Restaurant")
+restaurant = Itemtype.create(name: "Restaurant")
 Itemtype.create(name: "Link")
 Itemtype.create(name: "Article")
 
-u = User.create(name: "Bob Bobertson", username: "bbob", email: "bobertson87@gmail.com", password: "password123")
-u2 = User.create(name: "Kevin Smith", username: "ksmith", email: "ksmith@gmail.com", password: "password123")
+bob = User.create(name: "Bob Bobertson", username: "bbob", email: "bobertson87@gmail.com", password: "password123")
+kevin = User.create(name: "Kevin Smith", username: "ksmith", email: "ksmith@gmail.com", password: "password123")
 
-i = Item.create(itemtype_id: r.id, url: "http://www.portillos.com/", name: "Portillos")
+portillos = Item.create(itemtype_id: restaurant.id, url: "http://www.portillos.com/", name: "Portillos")
 
-p = Post.create(message: "Great sandwiches!")
+portillos_post = Post.create(message: "Great sandwiches!")
 
-i.post_id = p.id
-i.save!
+portillos.post_id = portillos_post.id
+portillos.save!
 
-p.user_id = u.id
-p.save!
+portillos_post.user_id = bob.id
+portillos_post.save!
 
-f = Follow.create(follower_id: u2.id, followed_id: u.id)
+follow = Follow.create(follower_id: kevin.id, followed_id: bob.id)

@@ -8,11 +8,31 @@
 
 
 Itemtype.delete_all
+Post.delete_all
+Item.delete_all
+User.delete_all
+Follow.delete_all
 
 Itemtype.create(name: "Book")
 Itemtype.create(name: "Movie")
 Itemtype.create(name: "TV Show")
 Itemtype.create(name: "Product")
-Itemtype.create(name: "Restaurant")
+r = Itemtype.create(name: "Restaurant")
 Itemtype.create(name: "Link")
 Itemtype.create(name: "Article")
+
+u = User.create(name: "Bob Bobertson", username: "bbob", email: "bobertson87@gmail.com", password: "password123")
+u2 = User.create(name: "Kevin Smith", username: "ksmith", email: "ksmith@gmail.com", password: "password123")
+
+i = Item.create(item_type_id: r.id, url: "http://www.portillos.com/")
+
+p = Post.create(message: "Great sandwiches!")
+
+i.post_id = p.id
+i.save!
+
+p.item_id = i.id
+p.user_id = u.id
+p.save!
+
+f = Follow.create(follower_id: u2.id, followed_id: u.id)

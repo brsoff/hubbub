@@ -9,9 +9,9 @@ describe "Posts" do
     @user = FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
     visit root_path
-    fill_in("Post input", with: "test message")
-    select("Restaurant", from: "item_type")
-    fill_in("Post link", with: "http://www.google.com")
+    fill_in("message", with: "test message")
+    select("Restaurant", from: "item_id")
+    fill_in("URL", with: "http://www.google.com")
     click_button("Post")
   end
 

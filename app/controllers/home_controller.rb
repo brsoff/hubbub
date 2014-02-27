@@ -3,11 +3,8 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
 
   def index
-    @post = Post.new
-    @item = Item.new
-
-    @posts = Post.all
-    @itemtypes = Itemtype.all
+    user = User.find(current_user.id)
+    render json: Post.all
   end
 
 end

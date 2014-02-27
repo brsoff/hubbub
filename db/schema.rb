@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20140227005942) do
     t.datetime "updated_at"
   end
 
+  add_index "follows", ["followed_id"], name: "index_follows_on_followed_id", using: :btree
+  add_index "follows", ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
+
   create_table "items", force: true do |t|
     t.integer  "itemtype_id"
     t.integer  "post_id"

@@ -1,0 +1,56 @@
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+<div class="modal-header">
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<button class="close" data-dismiss="modal">x</button>
+
+
+
+</div>
+
+<div class="modal-body">
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+
+  <div class="form-inputs">
+    <div><%= f.label :username %><br />
+
+    <%= f.text_field :username, :required => true, :autofocus => true %></div>
+
+    <div><%= f.label :email %><br />
+    <%= f.text_field :email, :required => true, :autofocus => true %></div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <div><%= f.label :password %><br />
+    <%= f.text_field :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+    <%= f.text_field :password_confirmation, :required => false %></div>
+
+    <div><%= f.label :current_password %><br />
+    <%= f.text_field :current_password, :hint => "we need your current password to confirm your changes", :required => true %></div>
+  </div>
+<br />
+  <%= f.submit "update", :class => 'btn btn-small btn-success' %>
+  <% end %>
+<br />
+<p>unhappy? you can always <%= link_to "cancel your account", registration_path(resource_name), :data => { :confirm => "are you sure?" }, :method => :delete %> (but it won't fix anything)</p>
+</div>
+
+<div class="modal-footer">
+
+<%= render "devise/shared/links" %>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>

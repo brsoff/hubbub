@@ -61,7 +61,8 @@ PostView = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template())
+    // console.log(this.template())
+    this.$el.html(this.template(this.model.attributes))
     // this.template().append(templateData);
   }
 

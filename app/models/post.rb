@@ -14,4 +14,19 @@ class Post < ActiveRecord::Base
     return @posts
   end
 
+  def self.add_post(params, user)
+    @post = Post.create(message: params[:message], user_id: user.id)
+    @item = Item.create(name: params[:item_name], post_id: @post.id, url: params[:item_url], itemtype_id: params[:item_type])
+    return @post
+  end
+
+
+  #  {"message"=>"omg does this work",
+  # "item_name"=>"community",
+  # "item_url"=>"nbc.com",
+  # "item_type"=>"3",
+  # "action"=>"create",
+  # "controller"=>"posts",
+  # "post"=>{"message"=>"omg does this work"}}
+
 end

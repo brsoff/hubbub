@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'devise'
+gem 'pry'
 gem 'pry-rails'
 gem 'capybara'
 gem 'rspec-rails'

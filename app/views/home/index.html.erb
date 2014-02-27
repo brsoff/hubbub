@@ -11,6 +11,18 @@
   {{/each}}
 </script>
 
+<script id="post_form_view" type="text/x-handlebars-template">
+  <input type="text" placeholder="Message">
+  <select>
+  <% @itemtypes.each do |type| %>
+  <option value="<%= type.id %>"><%= type.name %></option>
+  <% end %>
+  </select>
+  <input type="text" placeholder="Name">
+  <input type="text" placeholder="URL">
+  <button id="post_submit_button">Submit</button>
+</script>
+
 <%= current_user.name %>
 <h1>Welcome</h1>
 

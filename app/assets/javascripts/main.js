@@ -68,6 +68,25 @@ PostView = Backbone.View.extend({
 
 })
 
+FormView = Backbone.View.extend({
+
+  initialize: function(){
+    var self = this;
+    this.render()
+  },
+
+  el: function(){
+    $formContainer = $('<div id="form_container">')
+    return $formContainer;
+  },
+
+  render: function (){
+    $('.container').append(this.$el);
+    var template = Handlebars.compile( $("#post_form_view").html() );
+    this.$el.html(template);
+  }
+})
+
 
 
 
@@ -77,5 +96,6 @@ $(function () {
 window.list = new PostsCollection ();
 window.postsListView = new PostsListView ({collection: list}); //render posts
 window.postsListView.collection.fetch();
+window.form_view = new FormView();
 
 })

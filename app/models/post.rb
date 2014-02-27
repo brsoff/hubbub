@@ -4,9 +4,9 @@ class Post < ActiveRecord::Base
 
   def self.get_posts(current_user)
     user = User.find(current_user.id)
-    array = user.followed_users
-    binding.pry
-
+    array = Array.new
+    array << user.followed_users
+    array.flatten
     array << user
     @posts = Array.new
     array.each do |followed_user|

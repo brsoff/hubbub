@@ -4,10 +4,13 @@ class Post < ActiveRecord::Base
 
   def self.get_posts(current_user)
     user = User.find(current_user.id)
-    followed_users = user.followed_users
+    array = user.followed_users
+    binding.pry
+
+    array << user
     @posts = Array.new
-    followed_users.each do |user|
-      user.posts.each do |post|
+    array.each do |followed_user|
+      followed_user.posts.each do |post|
         @posts << post
       end
     end

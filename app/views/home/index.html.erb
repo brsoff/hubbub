@@ -3,15 +3,7 @@
 <%= current_user.name %>
 <h1>Welcome</h1>
 
-<%= form_for @post do |f| %>
-  <%= f.text_area :message, placeholder: "message", :maxlength => 70 %><br>
-    <%= form_for @item do |f| %>
-    <%= f.collection_select :id, @itemtypes, :id, :name %><br>
-      <%= f.text_field :name, placeholder: "name" %><br>
-      <%= f.text_field :url, placeholder: "link" %><br>
-    <% end %>
-  <%= f.submit %>
-<% end %>
+<%= @posts %>
 
 
 

@@ -4,10 +4,9 @@ Post = Backbone.Model.extend({
 
 })
 
-postsListsView = Backbone.View.extend({
+PostsListView = Backbone.View.extend({
 
   initialize: function () {
-    this.render();
     this.views = [];
   },
 
@@ -28,8 +27,8 @@ postsListsView = Backbone.View.extend({
   },
 
   el: function () {
-    $container = $("<div>").attr("id", "container")
-    return $container;
+    $postsContainer = $('<div id="posts_container">')
+    return $postsContainer;
   }
 
 
@@ -39,7 +38,7 @@ PostsCollection = Backbone.Collection.extend({
 
   initialize:function () {
     this.bind("all", function () {
-      postsListsView.render();
+      postsListView.render();
     })
   },
 
@@ -51,19 +50,19 @@ PostsCollection = Backbone.Collection.extend({
 PostView = Backbone.View.extend({
 
   initialize: function () {
-    this.render(this.model);
+    this.render();
   },
 
-  template: function () {
-    return $("#post_view")
-  },
-
-  render: function (post) {
-    var source = this.template().html();
+  template: function (attrs) {
+    var source = $("#post_view").html();
     var template = Handlebars.compile(source);
+    var templateData = template(attrs);
+    return templateData;
+  },
 
-    var templateData = template(post);
-    this.template().append(templateData);
+  render: function () {
+    this.$el.html(this.template())
+    // this.template().append(templateData);
   }
 
 })
@@ -75,6 +74,7 @@ PostView = Backbone.View.extend({
 $(function () {
 
 window.list = new PostsCollection ();
-window.postsListView = new postsListsView ({collection: list}); //render posts
+window.postsListView = new PostsListView ({collection: list}); //render posts
+window.postsListView.collection.fetch();
 
 })

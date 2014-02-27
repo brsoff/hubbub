@@ -1,5 +1,12 @@
 <% if current_user %>
 
+<script id="post_view" type="text/x-handlebars-template">
+  <div class="post">
+    <p>{{ post.message }}</p>
+    <p>{{ post.item }}</p>
+  </div>
+</script>
+
 <%= current_user.name %>
 <h1>Welcome</h1>
 

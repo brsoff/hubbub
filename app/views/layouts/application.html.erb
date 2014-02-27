@@ -7,17 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-  <nav>
-<% if current_user %>
-  <a href="<%= sign_out_path %>">Sign Out</a>
-<% end %>
-</nav>
-   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <%= render "home/login_modal" %>
 
-<%= yield %>
-</div>
+  <%= render "home/sign_up_modal" %>
+  <%= render 'home/edit_modal' %>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Pinster</a>
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+            <li class="active"> <%= link_to current_user.username, "/#edit", "data-toggle" => "modal"  %>
+            </li>
+            <li><%= link_to "sign out", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+            <li class="active"><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
+            <li><%= link_to "Sign Up", "#sign_up", "data-toggle" => "modal"%> </li>  
+            <% end %>
+          </ul>
+        </div> 
+      </div>
+  </nav>
+
+
+  <div class='container'>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

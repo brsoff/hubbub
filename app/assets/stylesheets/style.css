@@ -1,0 +1,30 @@
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+.container.main {
+  margin-top: 100px;
+}
+
+.navbar-inverse {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #000;
+
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #000;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #000;
+}
+

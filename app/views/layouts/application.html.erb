@@ -2,42 +2,18 @@
 <html>
 <head>
   <title>Hubbub</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render "home/login_modal" %>
-
   <%= render "home/sign_up_modal" %>
-  <%= render 'home/edit_modal' %>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Hubbub</a>
-          <ul class="nav navbar-nav">
-            <% if user_signed_in? %>
-            <li class="active"> <%= link_to current_user.username, "/#edit", "data-toggle" => "modal"  %>
-            </li>
-            <li><%= link_to "sign out", destroy_user_session_path, :method => :delete %></li>
-            <% else %>
-            <li class="active"><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
-            <li><%= link_to "Sign Up", "#sign_up", "data-toggle" => "modal"%> </li>  
-            <% end %>
-          </ul>
-        </div> 
-      </div>
-  </nav>
+  <%= render "home/edit_modal" %>
+  <%= render "layouts/header" %>
 
-
-  <div class='container'>
+  <div class='container main'>
     <%= yield %>
   </div>
 

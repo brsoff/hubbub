@@ -12,7 +12,7 @@ PostsListView = Backbone.View.extend({
 
   render: function () {
     var self = this;
-    $("body").append(self.$el)
+    $(".container.main").append(self.$el)
     self.$el.empty();
 
     _.each(self.collection.models, function (post) {
@@ -61,14 +61,10 @@ PostView = Backbone.View.extend({
   },
 
   render: function () {
-    // console.log(this.template())
     this.$el.html(this.template(this.model.attributes))
-    // this.template().append(templateData);
   }
 
 })
-
-
 
 
 

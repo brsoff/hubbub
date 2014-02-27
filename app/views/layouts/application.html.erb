@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WdiProject3</title>
+  <title>Hubbub</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -21,7 +21,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Pinster</a>
+        <a class="navbar-brand" href="#">Hubbub</a>
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
             <li class="active"> <%= link_to current_user.username, "/#edit", "data-toggle" => "modal"  %>

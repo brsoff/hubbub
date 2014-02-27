@@ -24,7 +24,7 @@ Itemtype.create(name: "Article")
 u = User.create(name: "Bob Bobertson", username: "bbob", email: "bobertson87@gmail.com", password: "password123")
 u2 = User.create(name: "Kevin Smith", username: "ksmith", email: "ksmith@gmail.com", password: "password123")
 
-i = Item.create(item_type_id: r.id, url: "http://www.portillos.com/")
+i = Item.create(item_type_id: r.id, url: "http://www.portillos.com/", name: "Portillos")
 
 p = Post.create(message: "Great sandwiches!")
 

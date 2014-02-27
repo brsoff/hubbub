@@ -1,10 +1,14 @@
 <% if current_user %>
 
 <script id="post_view" type="text/x-handlebars-template">
-  <div class="post">
-    <p>{{ posts/message }}</p>
-    <p>{{ posts/item/name }}</p>
-  </div>
+  {{#each posts}}
+    <div class="post">
+      <p>{{ message }}</p>
+      <p>{{ item/name }}</p>
+      <p>{{ item/itemtype/name }}</p>
+      <p><a href="{{ item/url }}">{{ item/url }}</a></p>
+    </div>
+  {{/each}}
 </script>
 
 <%= current_user.name %>

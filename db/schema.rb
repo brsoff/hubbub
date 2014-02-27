@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140227005942) do
   end
 
   create_table "items", force: true do |t|
-    t.integer  "item_type_id"
+    t.integer  "itemtype_id"
     t.integer  "post_id"
     t.text     "url"
     t.datetime "created_at"

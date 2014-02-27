@@ -6,10 +6,8 @@ class PostsController < ApplicationController
     else
       @posts = ["You are not following anybody."]
     end
-    respond_to do |format|
-      format.json {render json: @posts}
-      format.html
-    end
+
+    render json: @posts
   end
 
   def create

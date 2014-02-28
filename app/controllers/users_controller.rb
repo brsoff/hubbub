@@ -19,4 +19,9 @@ before_filter :authenticate_user!
     render json: @user
   end
 
+  def search
+    @users = User.where("name like ?", "%#{params[:name]}%")
+    render json: @users
+  end
+
 end

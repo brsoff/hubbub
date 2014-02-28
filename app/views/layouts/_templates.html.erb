@@ -55,7 +55,7 @@
 
 <script id="search_view" type="text/x-handlebars-template">
   <input type="text" placeholder="search term" id="search_field">
-  <button id="search_submit_button">Search</button>
+  <a href="#search" class="btn btn-primary" id="search_submit" data-toggle="modal">Search</a>
 </script>
 
 
@@ -72,4 +72,10 @@
 <p> Message: <input type='text' name='message' class='editmessage'>
 </form>
 </div>
+</script>
+
+<script id="search_results" type"text/x-underscore-template">
+<p>Name: {{= name}}</p>
+<p>Username: {{= username}}</p>
+<p>Avatar: {{= avatar_url}}</p>
 </script>

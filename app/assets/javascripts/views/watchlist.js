@@ -1,6 +1,6 @@
 WatchlistView = Backbone.View.extend({
 
-  className: 'eachwatchlist col-sm-3 view',
+  className: 'eachwatchlist',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);

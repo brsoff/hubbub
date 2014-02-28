@@ -1,6 +1,6 @@
 PostView = Backbone.View.extend({
 
-  className: 'eachpost col-sm-3 view',
+  className: 'eachpost',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
@@ -45,7 +45,7 @@ PostView = Backbone.View.extend({
 
   watch: function (){
     // console.log("to do")
-    app.watchlists.add(this.model)
+    Hubub.watchlists.add(this.model)
   }
 
 });

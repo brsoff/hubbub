@@ -31,6 +31,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .eachpost {
   border: 3px solid black;
   margin: 1%;
+  padding: 8px;
 }
 .eachwatchlist {
   border: 3px solid red;
@@ -47,3 +48,6 @@ body, h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+input, textarea, select{
+  width: 100%;
+}

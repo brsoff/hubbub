@@ -14,7 +14,7 @@ FormView = Backbone.View.extend({
   },
 
   render: function (){
-    $('.container').append(this.$el);
+    $('#left-sidebar').append(this.$el);
     var template = Handlebars.compile( $("#post_form_view").html() );
     this.$el.html(template);
   },
@@ -43,7 +43,7 @@ FormView = Backbone.View.extend({
 
 
    
-    app.posts.add(newPost).save();
+    Hubub.posts.add(newPost).save();
    
   }
 });

@@ -1,22 +1,18 @@
 <% if current_user %>
 
-<script id="post_view" type="text/x-handlebars-template">
-  {{#each posts}}
-    <div class="post">
-      <p>{{ message }}</p>
-      <p>{{ item/name }}</p>
-      <p>{{ item/itemtype/name }}</p>
-      <p><a href="{{ item/url }}">{{ item/url }}</a></p>
-    </div>
-  {{/each}}
+<div id="posts">
+</div>
+
+<div id="post_list">
+</div>
+
+
+ 
 </script>
 
 <script id="post_form_view" type="text/x-handlebars-template">
   <input type="text" placeholder="Message" id="post_message">
   <select id="item_itemtype">
-  <% @itemtypes.each do |type| %>
-  <option value="<%= type.id %>"><%= type.name %></option>
-  <% end %>
   </select>
   <input type="text" placeholder="Name" id="item_name">
   <input type="text" placeholder="URL" id="item_url">
@@ -26,7 +22,7 @@
 <%= current_user.name %>
 <h1>Welcome</h1>
 
-<%= @posts %>
+
 
 <% end %>
 

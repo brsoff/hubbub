@@ -77,17 +77,16 @@ PostView = Backbone.View.extend({
     'click .update': 'edit',
   },
 
-  template: function (attrs) {
-    console.log("is this working?")
-    console.log(attrs)
-    var source = $("#post_view").html();
-    var template = Handlebars.compile(source);
-    var templateData = template(attrs);
-    return templateData;
-  },
+
+  template: _.template('<h3 class="message"> message <%= message %>, <button class="destroy"> Delete </button> <button class="update">Update</button> <input class="edit" type="text" value="<%= name %>"/>'),
 
   render: function (){
+    console.log("TEST")
+
     this.$el.html(this.template(this.model.toJSON()));
+ 
+
+    
     return this;
 
   },
@@ -100,7 +99,7 @@ PostView = Backbone.View.extend({
   edit: function (){
     console.log("edit was called!");
     input = this.$('.edit');
-    this.model.set({name: input.val()}).save();
+    this.model.set({message: input.val()}).save();
   },
 
 });
@@ -132,9 +131,10 @@ PostsView = Backbone.View.extend({
 
 FormView = Backbone.View.extend({
 
+
   initialize: function(){
     var self = this;
-    this.render()
+    this.render();
   },
 
   el: function(){
@@ -153,19 +153,22 @@ FormView = Backbone.View.extend({
   },
 
   createPost: function (e) {
-    var message = $("#post_message").val();
-    var item_name = $("#item_name").val();
-    var item_url = $("#item_url").val();
-    var item_type = $("#item_itemtype").val();
-
-    e.preventDefault();
-
-    window.list.create({
-      message: message,
-      item_name: item_name,
-      item_url: item_url,
-      item_type: item_type
+    console.log("is this running twice?")
+     e.preventDefault();
+    var $message = $("#post_message").val();
+    var $item_name = $("#item_name").val();
+    var $item_url = $("#item_url").val();
+    var $item_type = $("#item_itemtype").val();
+    var newPost = new Post({
+      message: $message,
+      itemName: $item_name,
+      itemUrl: $item_url,
+      itemType: $item_type
     })
+
+
+   
+    app.posts.add(newPost).save();
    
   }
 })

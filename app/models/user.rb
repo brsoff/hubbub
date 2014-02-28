@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     @user_data["followers"] = user.followers.count
     @user_data["followed_users"] = user.followed_users.count
     @user_data["posts"] = user.posts.count
+    @user_data["followed_ids"] = []
+    user.followed_users.each do |user|
+      @user_data["followed_ids"] << user.id
+    end
 
     return @user_data
   end

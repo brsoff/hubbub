@@ -290,7 +290,9 @@ WatchlistsView = Backbone.View.extend({
 
 PostRouter = Backbone.Router.extend({
 routes: {
-    "": "index"
+    "": "index",
+    "watchlist": "watchlist",
+    "posts":"posts"
     // "posts/:id": "show",
     // "posts/:id/edit": "edit",
     // "posts/new" : "newpost"
@@ -327,6 +329,21 @@ routes: {
   start: function(){
     Backbone.history.start();
   },
+
+  watchlist: function(){
+    this.watchlists.fetch();
+    console.log('rendering watchlist to div with id #watchlists')
+    $('#watchlists').html(this.watchlistsView.render().el);
+    $('#posts').html('')
+
+  },
+
+  posts: function(){
+    this.posts.fetch();
+    console.log('rendering posts to div with id #posts')
+    $('#posts').html(this.postsView.render().el);
+    $('#watchlists').html('')
+  }
 
   // show: function(id){
   //   this.posts.focusOnpost(id);

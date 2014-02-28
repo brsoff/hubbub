@@ -12,4 +12,8 @@ WdiProject3::Application.routes.draw do
   end
 
   root to: "home#index"
+
+  get "/currentuser" => "users#current"
+
+  get "/user" => "users#user"
 end

@@ -178,7 +178,104 @@ FormView = Backbone.View.extend({
     app.posts.add(newPost).save();
    
   }
-})
+});
+
+WatchlistsCollection = Backbone.Collection.extend({
+
+  url: '/watchlists',
+
+  model: Post,
+
+  initialize: function(){
+    this.on('remove', this.hideModel, this);
+  },
+
+  hideModel: function(model){
+    model.trigger('hide');
+  },
+
+  focusOnwatchlist: function(id) {
+    var modelsToRemove = this.filter(function(watchlist){
+      return watchlist.id != id;
+    });
+
+    this.remove(modelsToRemove);
+  }
+
+
+
+});
+
+WatchlistView = Backbone.View.extend({
+
+  className: 'eachwatchlist col-sm-4 view',
+
+  initialize: function () {
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.template = _.template($('#watchlistview').html());
+  },
+
+  events: {
+    'click .destroy': 'delete',
+    'click .update': 'edit',
+  },
+
+
+  // template: _.template($("#watchlistview").html()),
+
+  render: function (){
+    console.log("TEST")
+    
+
+    this.$el.html(this.template(this.model.toJSON()));
+ 
+
+    
+    return this;
+
+  },
+
+  delete: function (){
+    console.log("I was called!")
+    this.model.destroy();
+  },
+
+  edit: function (){
+    console.log("edit was called!");
+    this.$el.addClass('editing');
+    this.$form = $('.form');
+    console.log(this.$form);
+    this.$form.removeClass('hidden')
+    // this.model.set({message: input.val()}).save();
+  },
+
+});
+
+WatchlistsView = Backbone.View.extend({
+
+  initialize: function(){
+    this.collection.on('add', this.addOne, this);
+    this.collection.on('reset', this.addAll, this);
+  },
+
+  render: function (){
+    this.addAll()
+    return this;
+  },
+
+  addAll: function(){
+    this.$el.empty();
+    this.collection.forEach(this.addOne, this);
+  },
+
+  addOne: function(watchlistItem){
+    var watchlistView = new WatchlistView({model: watchlistItem});
+    console.log(this.$el);
+    this.$el.append(watchlistView.render().el);
+  }
+
+});
 
 
 PostRouter = Backbone.Router.extend({
@@ -193,17 +290,26 @@ routes: {
     this.posts = new PostsCollection();
     console.log("loading posts")
     console.log(this.posts);
-    this.postsView = new PostsView({collection: this.posts});
+    console.log("loading watchlist")
+    this.watchlists = new WatchlistsCollection();
     console.log("Postsview")
+    this.postsView = new PostsView({collection: this.posts});
     console.log(this.postsView);
+    console.log('WatchlistView');
+    this.watchlistsView = new WatchlistsView({collection: this.watchlists})
+  
   },
 
   index: function(){
-    console.log("this is the postsview and the cotnacts view el")
-    console.log(this.postsView);
-    console.log(this.postsView.el);
+    console.log("fetching posts")
+ 
     this.posts.fetch();
+    console.log('fetching watchlist')
+    this.watchlists.fetch();
+    console.log('rendering postView to div with id #posts')
     $('#posts').html(this.postsView.render().el);
+    console.log('rendering watchlist to div with id #watchlists')
+    $('#watchlists').html(this.watchlistsView.render().el);
     var postForm = new FormView();
     
   },
@@ -212,16 +318,18 @@ routes: {
     Backbone.history.start();
   },
 
-  show: function(id){
-    this.posts.focusOnpost(id);
-  },
+  // show: function(id){
+  //   this.posts.focusOnpost(id);
+  // },
 
-  edit: function (id){
-    var postForm = new formView({model: this.posts.get(id)});
-    $('#posts').html(postForm.render().el);
+  // edit: function (id){
+  //   var postForm = new formView({model: this.posts.get(id)});
+  //   $('#posts').html(postForm.render().el);
 
 
-  }
+  // }
+
+
 });
 
 $(function(){
@@ -231,6 +339,8 @@ $(function(){
 });
 
 
+//INTERPOLATE FOR UNDERSCORE TEMPLATE NOW {{=}}
+//EVALUATE {{}}
 _.templateSettings = {
     interpolate: /\{\{=(.+?)\}\}/g,
     evaluate: /\{\{(.+?)\}\}/g,

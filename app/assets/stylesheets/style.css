@@ -31,6 +31,9 @@ body, h1, h2, h3, h4, h5, h6 {
 .eachpost {
   border: 3px solid black;
 }
+.eachwatchlist {
+  border: 3px solid red;
+}
 
 .eachpost .editing .edit {
   display: block;

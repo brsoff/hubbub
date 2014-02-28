@@ -32,6 +32,24 @@
   <button id="post_submit_button">Submit</button>
 </script>
 
+<div id='watchlists'>
+</div>
+
+<script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
+
+<p>Message: {{= message}}</p>
+<p>Category: {{= item_category}}
+<p>Name: {{=item_name}} </p>
+<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+</div>
+<div class='form hidden'>
+<form>
+<p> Message: <input type='text' name='message' class='editmessage'>
+</form>
+</div>
+</script>
+
 <%= current_user.name %>
 <h1>Welcome</h1>
 

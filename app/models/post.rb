@@ -19,17 +19,21 @@ class Post < ActiveRecord::Base
     return @posts
   end
 
-    def self.add_post(params, user)
-      @post = Post.create(message: params[:message], user_id: user.id)
-    end
-
-
-    #  {"message"=>"omg does this work",
-    # "item_name"=>"community",
-    # "item_url"=>"nbc.com",
-    # "item_type"=>"3",
-    # "action"=>"create",
-    # "controller"=>"posts",
-    # "post"=>{"message"=>"omg does this work"}}
-
+  def self.add_post(params, user)
+    @post = Post.create(message: params[:message], user_id: user.id)
   end
+
+
+  #  {"message"=>"omg does this work",
+  # "item_name"=>"community",
+  # "item_url"=>"nbc.com",
+  # "item_type"=>"3",
+  # "action"=>"create",
+  # "controller"=>"posts",
+  # "post"=>{"message"=>"omg does this work"}}
+
+
+  def self.get_watched(user)
+    @posts = Watchlist.where(user: user)
+  end
+end

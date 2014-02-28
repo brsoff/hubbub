@@ -67,6 +67,8 @@ PostsCollection = Backbone.Collection.extend({
 
 PostView = Backbone.View.extend({
 
+  className: 'eachpost col-sm-4 view',
+
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
@@ -83,6 +85,7 @@ PostView = Backbone.View.extend({
 
   render: function (){
     console.log("TEST")
+    
 
     this.$el.html(this.template(this.model.toJSON()));
  
@@ -99,8 +102,11 @@ PostView = Backbone.View.extend({
 
   edit: function (){
     console.log("edit was called!");
-    input = this.$('.edit');
-    this.model.set({message: input.val()}).save();
+    this.$el.addClass('editing');
+    this.$form = $('.form');
+    console.log(this.$form);
+    this.$form.removeClass('hidden')
+    // this.model.set({message: input.val()}).save();
   },
 
 });

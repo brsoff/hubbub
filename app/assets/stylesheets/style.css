@@ -28,3 +28,17 @@ body, h1, h2, h3, h4, h5, h6 {
   color: #000;
 }
 
+.eachpost {
+  border: 3px solid black;
+}
+
+.eachpost .editing .edit {
+  display: block;
+  width: 444px;
+  padding: 13px 15px 14px 20px;
+  margin: 0;
+}
+.eachpost .editing .view {
+  display: none;
+}
+

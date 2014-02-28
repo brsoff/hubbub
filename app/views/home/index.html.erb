@@ -8,11 +8,20 @@
 
 
  
-<script id="postview" type="text/x-underscore-template">
-Message: {{= message}}
-Category: 
+<script id="postview" type="text/x-underscore-template" class="col-sm-3">
 
-<button class='destroy'>Delete</button>
+<p>Message: {{= message}}</p>
+<p>Category: {{= item_category}}
+<p>Name: {{=item_name}} </p>
+<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+</div>
+<div class='form hidden'>
+<form>
+<p> Message: <input type='text' name='message' class='editmessage'>
+</form>
+</div>
+
 </script>
 <script id="post_form_view" type="text/x-handlebars-template">
   <input type="text" placeholder="Message" id="post_message">

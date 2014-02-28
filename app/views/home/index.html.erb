@@ -1,10 +1,11 @@
 <% if current_user %>
 
+<div class="row">
 <div id="posts">
 </div>
-
-<div id="post_list">
 </div>
+
+
 
 
  
@@ -15,6 +16,7 @@
 <p>Name: {{=item_name}} </p>
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 <p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+<button class='watch'>Add to Watchlist</button>
 </div>
 <div class='form hidden'>
 <form>
@@ -26,17 +28,19 @@
 <script id="post_form_view" type="text/x-handlebars-template">
   <input type="text" placeholder="Message" id="post_message">
   <select id="item_itemtype">
+  <option value="restaurant">restaurant</option>
   </select>
   <input type="text" placeholder="Name" id="item_name">
   <input type="text" placeholder="URL" id="item_url">
   <button id="post_submit_button">Submit</button>
 </script>
-
+<div class="row">
 <div id='watchlists'>
+</div>
 </div>
 
 <script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
-
+<span class='active'>Watchlist</span>
 <p>Message: {{= message}}</p>
 <p>Category: {{= item_category}}
 <p>Name: {{=item_name}} </p>

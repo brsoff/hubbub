@@ -30,9 +30,11 @@ body, h1, h2, h3, h4, h5, h6 {
 
 .eachpost {
   border: 3px solid black;
+  margin: 1%;
 }
 .eachwatchlist {
   border: 3px solid red;
+  margin: 1%;
 }
 
 .eachpost .editing .edit {

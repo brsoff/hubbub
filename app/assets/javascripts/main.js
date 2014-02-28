@@ -67,7 +67,7 @@ PostsCollection = Backbone.Collection.extend({
 
 PostView = Backbone.View.extend({
 
-  className: 'eachpost col-sm-4 view',
+  className: 'eachpost col-sm-3 view',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
@@ -78,6 +78,7 @@ PostView = Backbone.View.extend({
   events: {
     'click .destroy': 'delete',
     'click .update': 'edit',
+    'click .watch': 'watch'
   },
 
 
@@ -108,6 +109,11 @@ PostView = Backbone.View.extend({
     this.$form.removeClass('hidden')
     // this.model.set({message: input.val()}).save();
   },
+
+  watch: function (){
+    console.log("to do")
+    app.watchlists.add(this.model)
+  }
 
 });
 
@@ -166,11 +172,15 @@ FormView = Backbone.View.extend({
     var $item_name = $("#item_name").val();
     var $item_url = $("#item_url").val();
     var $item_type = $("#item_itemtype").val();
+    var $item_category = $('#item_category').val();
+
     var newPost = new Post({
       message: $message,
-      itemName: $item_name,
-      itemUrl: $item_url,
-      itemType: $item_type
+      item_name: $item_name,
+      item_url: $item_url,
+      item_category: $item_type
+      
+
     })
 
 
@@ -208,7 +218,7 @@ WatchlistsCollection = Backbone.Collection.extend({
 
 WatchlistView = Backbone.View.extend({
 
-  className: 'eachwatchlist col-sm-4 view',
+  className: 'eachwatchlist col-sm-3 view',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
@@ -276,7 +286,7 @@ WatchlistsView = Backbone.View.extend({
   }
 
 });
-
+ // THE ROUTER IS THE FIRST PLACE THE APP GOES WHEN I STARTS
 
 PostRouter = Backbone.Router.extend({
 routes: {
@@ -285,7 +295,7 @@ routes: {
     // "posts/:id/edit": "edit",
     // "posts/new" : "newpost"
   },
-
+// THIS INITIALIZES POSTS AND WATCHLIST
   initialize: function(){
     this.posts = new PostsCollection();
     console.log("loading posts")
@@ -299,7 +309,7 @@ routes: {
     this.watchlistsView = new WatchlistsView({collection: this.watchlists})
   
   },
-
+// THIS FETCHES POST AND WATCHLIST FOR THE INDEX VIEW, WHICH IS DEFAULT
   index: function(){
     console.log("fetching posts")
  
@@ -313,7 +323,7 @@ routes: {
     var postForm = new FormView();
     
   },
-
+ // I BELIEE THIS LETS PEOPLE USE THE BACKBUTTON
   start: function(){
     Backbone.history.start();
   },

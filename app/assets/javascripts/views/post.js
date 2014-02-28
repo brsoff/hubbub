@@ -10,7 +10,7 @@ PostView = Backbone.View.extend({
 
   events: {
     'click .destroy': 'delete',
-    'click .update': 'edit',
+    // 'click .update': 'edit',
     'click .watch': 'watch'
   },
 
@@ -20,11 +20,8 @@ PostView = Backbone.View.extend({
   render: function (){
     console.log("TEST")
     
-
     this.$el.html(this.template(this.model.toJSON()));
  
-
-    
     return this;
 
   },
@@ -34,14 +31,14 @@ PostView = Backbone.View.extend({
     this.model.destroy();
   },
 
-  edit: function (){
-    console.log("edit was called!");
-    this.$el.addClass('editing');
-    this.$form = $('.form');
-    console.log(this.$form);
-    this.$form.removeClass('hidden')
-    // this.model.set({message: input.val()}).save();
-  },
+  // edit: function (){
+  //   console.log("edit was called!");
+  //   this.$el.addClass('editing');
+  //   this.$form = $('.form');
+  //   console.log(this.$form);
+  //   this.$form.removeClass('hidden')
+  //   // this.model.set({message: input.val()}).save();
+  // },
 
   watch: function (){
     // console.log("to do")

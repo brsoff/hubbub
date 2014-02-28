@@ -3,6 +3,7 @@ WdiProject3::Application.routes.draw do
   devise_for :users
 
   resources :posts
+  resources :users
   # resources :items
   resources :watchlists
 

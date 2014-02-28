@@ -18,7 +18,7 @@ PostsView = Backbone.View.extend({
   addOne: function(postItem){
     var postView = new PostView({model: postItem});
     console.log(this.$el);
-    this.$el.append(postView.render().$el)
+    this.$el.prepend(postView.render().$el.hide().fadeIn(500))
   
   }
 });

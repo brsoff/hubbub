@@ -1,0 +1,47 @@
+<script id="postview" type="text/x-underscore-template" class="col-sm-3">
+
+<p>Message: {{= message}}</p>
+<p>Category: {{= item_category}}
+<p>Name: {{=item_name}} </p>
+<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+<button class='watch'>Add to Watchlist</button>
+</div>
+<div class='form hidden'>
+<form>
+<p> Message: <input type='text' name='message' class='editmessage'>
+</form>
+</div>
+
+</script>
+<script id="post_form_view" type="text/x-handlebars-template">
+  <input type="text" placeholder="Message" id="post_message">
+  <select id="item_itemtype">
+  <option value="Restaurant">Restaurant</option>
+  <option value="Book">Book</option>
+  <option value="Movie">Movie</option>
+  <option value="TV Show">TV Show</option>
+  <option value="Product">Product</option>
+  <option value="Link">Link</option>
+  <option value="Article">Article</option>
+  </select>
+  <input type="text" placeholder="Name" id="item_name">
+  <input type="text" placeholder="URL" id="item_url">
+  <button id="post_submit_button">Submit</button>
+</script>
+
+
+<script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
+<span class='active'>Watchlist</span>
+<p>Message: {{= message}}</p>
+<p>Category: {{= item_category}}
+<p>Name: {{=item_name}} </p>
+<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+</div>
+<div class='form hidden'>
+<form>
+<p> Message: <input type='text' name='message' class='editmessage'>
+</form>
+</div>
+</script>

@@ -17,6 +17,7 @@
 <div>
 <p>Name: {{= name}}</p>
 <p>Username: {{= username}}
+<p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
 <p>Following: {{= followed_users}}</a></p>
 <p> 
@@ -27,6 +28,7 @@
 <div>
 <p>Name: {{= name}}</p>
 <p>Username: {{= username}}
+<p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
 <p>Following: {{= followed_users}}</a></p>
 <p> 
@@ -49,6 +51,13 @@
   <input type="text" placeholder="URL" id="item_url">
   <button id="post_submit_button">Submit</button>
 </script>
+
+
+<script id="search_view" type="text/x-handlebars-template">
+  <input type="text" placeholder="search term" id="search_field">
+  <button id="search_submit_button">Search</button>
+</script>
+
 
 <script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
 <span class='active'>Watchlist</span>

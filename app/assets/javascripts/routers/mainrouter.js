@@ -36,9 +36,12 @@ routes: {
     console.log(this.currentuser)
     $('#posts').html(this.postsView.render().el);
     $('#watchlists').html(this.watchlistsView.render().el);
+
     // console.log(this.currentuserview.render().$el)
     
     var postForm = new FormView();
+      this.searchview = new SearchView();
+     $('#search_form').html(this.searchview.render().el)
     
   },
  // THIS LETS PEOPLE USE THE BACK BUTTON

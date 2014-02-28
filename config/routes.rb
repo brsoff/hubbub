@@ -17,5 +17,5 @@ WdiProject3::Application.routes.draw do
 
   get "/user" => "users#user"
 
-  post '/users/search' => "users#search"
+  get '/search' => "users#search"
 end

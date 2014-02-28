@@ -18,7 +18,7 @@ SearchUsersView = Backbone.View.extend({
   addOne: function(searchItem){
     var searchUserView = new SearchUserView({model: searchItem});
     console.log(this.$el);
-    this.$el.prepend(searchView.render().$el.hide().fadeIn(500))
+    this.$el.prepend(searchUserView.render().$el)
   
   }
 });

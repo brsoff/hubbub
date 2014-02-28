@@ -69,7 +69,8 @@ PostView = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
-    this.listenTo(this.model, 'destroy', this.remove)
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.template = _.template($('#postview').html());
   },
 
   events: {
@@ -78,7 +79,7 @@ PostView = Backbone.View.extend({
   },
 
 
-  template: _.template('<h3 class="message"> message <%= message %>, <button class="destroy"> Delete </button> <button class="update">Update</button> <input class="edit" type="text" value="<%= name %>"/>'),
+  // template: _.template($("#postview").html()),
 
   render: function (){
     console.log("TEST")
@@ -222,3 +223,9 @@ $(function(){
   app.start();
 
 });
+
+
+_.templateSettings = {
+    interpolate: /\{\{=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g,
+};

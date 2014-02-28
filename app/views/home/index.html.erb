@@ -8,8 +8,12 @@
 
 
  
-</script>
+<script id="postview" type="text/x-underscore-template">
+Message: {{= message}}
+Category: 
 
+<button class='destroy'>Delete</button>
+</script>
 <script id="post_form_view" type="text/x-handlebars-template">
   <input type="text" placeholder="Message" id="post_message">
   <select id="item_itemtype">

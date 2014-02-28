@@ -14,13 +14,21 @@
 </script>
 
 <script id="userview" type="text/x-underscore-template" class="col-sm-3">
-<img src="{{= avatar_url}}" />
+<div>
 <p>Name: {{= name}}</p>
 <p>Username: {{= username}}
-<p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
-<p>Following: {{= following}}</a></p>
-<p>Posts: {{= posts}}</a></p>
+<p>Following: {{= followed_users}}</a></p>
+<p> 
+</div>
+</script>
+
+<script id="currentuserview" type="text/x-underscore-template" class="col-sm-3">
+<div>
+<p>Name: {{= name}}</p>
+<p>Username: {{= username}}
+<p>Followers: {{= followers}}</a></p>
+<p>Following: {{= followed_users}}</a></p>
 <p> 
 </div>
 </script>

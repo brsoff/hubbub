@@ -13,29 +13,31 @@ routes: {
   },
 // THIS INITIALIZES POSTS AND WATCHLIST on 
   initialize: function(){
+    this.currentuser = new CurrentUser();
     this.posts = new PostsCollection();
-    console.log("loading posts")
-    console.log(this.posts);
-    console.log("loading watchlist")
     this.watchlists = new WatchlistsCollection();
-    console.log("Postsview")
     this.postsView = new PostsView({collection: this.posts});
-    console.log(this.postsView);
-    console.log('WatchlistView');
     this.watchlistsView = new WatchlistsView({collection: this.watchlists})
-  
+    this.currentuserview = new CurrentUserView({model: this.currentuser});
+    // console.log("HEY THIS IS THE CURRENTUSER VIEW")
+    // console.log(this.currentuserview)
   },
 // THIS FETCHES POST AND WATCHLIST FOR THE INDEX VIEW, WHICH IS DEFAULT
   index: function(){
-    console.log("fetching posts")
- 
+    var currentuser_view = this.currentuserview;
+    this.currentuser.fetch({
+      success: function (model) {
+        console.log(model)
+        $('#current_user_container').html(currentuser_view.render().el);
+      }
+    });
     this.posts.fetch();
-    console.log('fetching watchlist')
     this.watchlists.fetch();
-    console.log('rendering postView to div with id #posts')
+    console.log(this.currentuser)
     $('#posts').html(this.postsView.render().el);
-    console.log('rendering watchlist to div with id #watchlists')
     $('#watchlists').html(this.watchlistsView.render().el);
+    // console.log(this.currentuserview.render().$el)
+    
     var postForm = new FormView();
     
   },
@@ -46,7 +48,6 @@ routes: {
 
   watchlist: function(){
     this.watchlists.fetch();
-    console.log('rendering watchlist to div with id #watchlists')
     $('#watchlists').html(this.watchlistsView.render().el);
     $('#posts').empty();
 
@@ -54,7 +55,6 @@ routes: {
 
   posts: function(){
     this.posts.fetch();
-    console.log('rendering posts to div with id #posts')
     $('#posts').html(this.postsView.render().el);
     $('#watchlists').empty();
   }

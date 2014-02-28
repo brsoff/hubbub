@@ -16,18 +16,9 @@ SearchFormView = Backbone.View.extend({
 
   executeSearch: function() {
     console.log("search clicked")
-    var params = {
-      name: $('#search_field').val()
-    }
-    $.ajax({
-      url: "/users/search",
-      method: "post",
-      dataType: "json",
-      data: params,
-      success: function(data){
-        console.log(data)
-      }
-
+    this.model.fetch({
+      traditional: true,
+      data: {name: $('#search_field').val()}
     })
   }
 

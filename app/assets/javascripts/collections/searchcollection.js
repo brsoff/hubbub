@@ -1,4 +1,4 @@
-PostsCollection = Backbone.Collection.extend({
+SearchCollection = Backbone.Collection.extend({
 
   url: '/users/search',
 

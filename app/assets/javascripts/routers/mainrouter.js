@@ -6,7 +6,7 @@ PostRouter = Backbone.Router.extend({
 routes: {
     "": "index",
     "watchlist": "watchlist",
-    "posts":"posts"
+    "posts":"posts",
     // "posts/:id": "show",
     // "posts/:id/edit": "edit",
     // "posts/new" : "newpost"
@@ -19,6 +19,7 @@ routes: {
     this.postsView = new PostsView({collection: this.posts});
     this.watchlistsView = new WatchlistsView({collection: this.watchlists})
     this.currentuserview = new CurrentUserView({model: this.currentuser});
+    this.searchCollection = new SearchCollection();
     // console.log("HEY THIS IS THE CURRENTUSER VIEW")
     // console.log(this.currentuserview)
   },
@@ -40,8 +41,8 @@ routes: {
     // console.log(this.currentuserview.render().$el)
     
     var postForm = new FormView();
-      this.searchview = new SearchView();
-     $('#search_form').html(this.searchview.render().el)
+    this.searchFormView = new SearchFormView();
+    $('#search_form').html(this.searchFormView.render().el)
     
   },
  // THIS LETS PEOPLE USE THE BACK BUTTON
@@ -60,7 +61,9 @@ routes: {
     this.posts.fetch();
     $('#posts').html(this.postsView.render().el);
     $('#watchlists').empty();
-  }
+  },
+
+ 
 
   // show: function(id){
   //   this.posts.focusOnpost(id);

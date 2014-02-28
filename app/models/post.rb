@@ -20,17 +20,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.add_post(params, user)
-    @post = Post.create(message: params[:message], user_id: user.id)
+    @post = Post.create(message: params[:message], user_id: user.id, item_name: params[:item_name], item_url: params[:item_url], item_category: params[:item_category])
   end
-
-
-  #  {"message"=>"omg does this work",
-  # "item_name"=>"community",
-  # "item_url"=>"nbc.com",
-  # "item_type"=>"3",
-  # "action"=>"create",
-  # "controller"=>"posts",
-  # "post"=>{"message"=>"omg does this work"}}
 
 
   def self.get_watched(user)

@@ -1,17 +1,17 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_one :item
+  # has_one :item
 
   def self.get_posts(current_user)
     user = User.find(current_user.id)
-    array = user.followed_users
+    following = user.followed_users
     begin
-      array << user
+      following << user
     rescue
       puts "relationship already exists"
     end
     @posts = Array.new
-    array.each do |followed_user|
+    following.each do |followed_user|
       followed_user.posts.each do |post|
         @posts << post
       end
@@ -21,8 +21,6 @@ class Post < ActiveRecord::Base
 
     def self.add_post(params, user)
       @post = Post.create(message: params[:message], user_id: user.id)
-      @item = Item.create(name: params[:item_name], post_id: @post.id, url: params[:item_url], itemtype_id: params[:item_type])
-      return @post
     end
 
 

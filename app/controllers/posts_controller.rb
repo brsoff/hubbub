@@ -17,7 +17,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy!
+    @post.user = nil
+    @post.save!
 
     render json: @post
 

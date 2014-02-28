@@ -1,4 +1,4 @@
-SearchView = Backbone.View.extend({
+SearchFormView = Backbone.View.extend({
 
   initialize: function () {
     this.template = _.template($("#search_view").html());

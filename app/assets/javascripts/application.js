@@ -18,3 +18,11 @@
 //= require main
 //= require bootstrap
 // require_tree .
+//= require underscore
+//= require backbone
+//= require wdi_project3
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers

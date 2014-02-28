@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require bootstrap
+ *=require bootstrap.css.map
  *= require_tree .
  */

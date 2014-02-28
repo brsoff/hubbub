@@ -1,76 +1,147 @@
 
 Post = Backbone.Model.extend({
+  defaults: {
+    message: "",
+    user_id: ""
 
 
-})
-
-PostsListView = Backbone.View.extend({
-
-  initialize: function () {
-    this.views = [];
-  },
-
-  render: function () {
-    var self = this;
-    $(".container.main").append(self.$el)
-    self.$el.empty();
-
-    _.each(self.collection.models, function (post) {
-      var post_view = new PostView ({
-        model: post
-      });
-
-      self.$el.append(post_view.$el)
-
-      self.views.push(post)
-    })
-  },
-
-  el: function () {
-    $postsContainer = $('<div id="posts_container">')
-    return $postsContainer;
   }
 
-
 })
+
+// PostsListView = Backbone.View.extend({
+
+//   initialize: function () {
+//     this.views = [];
+//   },
+
+//   render: function () {
+//     var self = this;
+//     $(".container.main").append(self.$el)
+//     self.$el.empty();
+
+//     _.each(self.collection.models, function (post) {
+//       var post_view = new PostView ({
+//         model: post
+//       });
+
+//       self.$el.append(post_view.$el)
+
+//       self.views.push(post)
+//     })
+//   },
+
+//   el: function () {
+//     $postsContainer = $('<div id="posts_container">')
+//     return $postsContainer;
+//   }
+
+
+// })
 
 PostsCollection = Backbone.Collection.extend({
 
-  initialize:function () {
-    this.bind("all", function () {
-      postsListView.render();
-    })
+  url: '/posts',
+
+  model: Post,
+
+  initialize: function(){
+    this.on('remove', this.hideModel, this);
   },
 
-  url: "/posts",
+  hideModel: function(model){
+    model.trigger('hide');
+  },
 
-  model: Post
-})
+  focusOnpost: function(id) {
+    var modelsToRemove = this.filter(function(post){
+      return post.id != id;
+    });
+
+    this.remove(modelsToRemove);
+  }
+
+
+
+});
 
 PostView = Backbone.View.extend({
 
+  className: 'eachpost col-sm-4 view',
+
   initialize: function () {
-    this.render();
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.template = _.template($('#postview').html());
   },
 
-  template: function (attrs) {
-    var source = $("#post_view").html();
-    var template = Handlebars.compile(source);
-    var templateData = template(attrs);
-    return templateData;
+  events: {
+    'click .destroy': 'delete',
+    'click .update': 'edit',
   },
 
-  render: function () {
-    this.$el.html(this.template(this.model.attributes))
+
+  // template: _.template($("#postview").html()),
+
+  render: function (){
+    console.log("TEST")
+    
+
+    this.$el.html(this.template(this.model.toJSON()));
+ 
+
+    
+    return this;
+
+  },
+
+  delete: function (){
+    console.log("I was called!")
+    this.model.destroy();
+  },
+
+  edit: function (){
+    console.log("edit was called!");
+    this.$el.addClass('editing');
+    this.$form = $('.form');
+    console.log(this.$form);
+    this.$form.removeClass('hidden')
+    // this.model.set({message: input.val()}).save();
+  },
+
+});
+
+PostsView = Backbone.View.extend({
+
+  initialize: function(){
+    this.collection.on('add', this.addOne, this);
+    this.collection.on('reset', this.addAll, this);
+  },
+
+  render: function (){
+    this.addAll()
+    return this;
+  },
+
+  addAll: function(){
+    this.$el.empty();
+    this.collection.forEach(this.addOne, this);
+  },
+
+  addOne: function(postItem){
+    var postView = new PostView({model: postItem});
+    console.log(this.$el);
+    this.$el.append(postView.render().el);
   }
 
-})
+});
 
 FormView = Backbone.View.extend({
 
+
   initialize: function(){
     var self = this;
-    this.render()
+    this.render();
   },
 
   el: function(){
@@ -89,30 +160,188 @@ FormView = Backbone.View.extend({
   },
 
   createPost: function (e) {
-    var message = $("#post_message").val();
-    var item_name = $("#item_name").val();
-    var item_url = $("#item_url").val();
-    var item_type = $("#item_itemtype").val();
-
-    e.preventDefault();
-
-    window.list.create({
-      message: message,
-      item_name: item_name,
-      item_url: item_url,
-      item_type: item_type
+    console.log("is this running twice?")
+     e.preventDefault();
+    var $message = $("#post_message").val();
+    var $item_name = $("#item_name").val();
+    var $item_url = $("#item_url").val();
+    var $item_type = $("#item_itemtype").val();
+    var newPost = new Post({
+      message: $message,
+      itemName: $item_name,
+      itemUrl: $item_url,
+      itemType: $item_type
     })
+
+
+   
+    app.posts.add(newPost).save();
    
   }
-})
+});
+
+WatchlistsCollection = Backbone.Collection.extend({
+
+  url: '/watchlists',
+
+  model: Post,
+
+  initialize: function(){
+    this.on('remove', this.hideModel, this);
+  },
+
+  hideModel: function(model){
+    model.trigger('hide');
+  },
+
+  focusOnwatchlist: function(id) {
+    var modelsToRemove = this.filter(function(watchlist){
+      return watchlist.id != id;
+    });
+
+    this.remove(modelsToRemove);
+  }
 
 
 
-$(function () {
+});
 
-window.list = new PostsCollection ();
-window.postsListView = new PostsListView ({collection: list}); //render posts
-window.postsListView.collection.fetch();
-window.form_view = new FormView();
+WatchlistView = Backbone.View.extend({
 
-})
+  className: 'eachwatchlist col-sm-4 view',
+
+  initialize: function () {
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.template = _.template($('#watchlistview').html());
+  },
+
+  events: {
+    'click .destroy': 'delete',
+    'click .update': 'edit',
+  },
+
+
+  // template: _.template($("#watchlistview").html()),
+
+  render: function (){
+    console.log("TEST")
+    
+
+    this.$el.html(this.template(this.model.toJSON()));
+ 
+
+    
+    return this;
+
+  },
+
+  delete: function (){
+    console.log("I was called!")
+    this.model.destroy();
+  },
+
+  edit: function (){
+    console.log("edit was called!");
+    this.$el.addClass('editing');
+    this.$form = $('.form');
+    console.log(this.$form);
+    this.$form.removeClass('hidden')
+    // this.model.set({message: input.val()}).save();
+  },
+
+});
+
+WatchlistsView = Backbone.View.extend({
+
+  initialize: function(){
+    this.collection.on('add', this.addOne, this);
+    this.collection.on('reset', this.addAll, this);
+  },
+
+  render: function (){
+    this.addAll()
+    return this;
+  },
+
+  addAll: function(){
+    this.$el.empty();
+    this.collection.forEach(this.addOne, this);
+  },
+
+  addOne: function(watchlistItem){
+    var watchlistView = new WatchlistView({model: watchlistItem});
+    console.log(this.$el);
+    this.$el.append(watchlistView.render().el);
+  }
+
+});
+
+
+PostRouter = Backbone.Router.extend({
+routes: {
+    "": "index"
+    // "posts/:id": "show",
+    // "posts/:id/edit": "edit",
+    // "posts/new" : "newpost"
+  },
+
+  initialize: function(){
+    this.posts = new PostsCollection();
+    console.log("loading posts")
+    console.log(this.posts);
+    console.log("loading watchlist")
+    this.watchlists = new WatchlistsCollection();
+    console.log("Postsview")
+    this.postsView = new PostsView({collection: this.posts});
+    console.log(this.postsView);
+    console.log('WatchlistView');
+    this.watchlistsView = new WatchlistsView({collection: this.watchlists})
+  
+  },
+
+  index: function(){
+    console.log("fetching posts")
+ 
+    this.posts.fetch();
+    console.log('fetching watchlist')
+    this.watchlists.fetch();
+    console.log('rendering postView to div with id #posts')
+    $('#posts').html(this.postsView.render().el);
+    console.log('rendering watchlist to div with id #watchlists')
+    $('#watchlists').html(this.watchlistsView.render().el);
+    var postForm = new FormView();
+    
+  },
+
+  start: function(){
+    Backbone.history.start();
+  },
+
+  // show: function(id){
+  //   this.posts.focusOnpost(id);
+  // },
+
+  // edit: function (id){
+  //   var postForm = new formView({model: this.posts.get(id)});
+  //   $('#posts').html(postForm.render().el);
+
+
+  // }
+
+
+});
+
+$(function(){
+  app = new PostRouter;
+  app.start();
+
+});
+
+
+//INTERPOLATE FOR UNDERSCORE TEMPLATE NOW {{=}}
+//EVALUATE {{}}
+_.templateSettings = {
+    interpolate: /\{\{=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g,
+};

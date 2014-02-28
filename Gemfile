@@ -12,7 +12,7 @@ gem 'pry-rails'
 gem 'capybara'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
-gem 'active_model_serializers'
+# gem 'active_model_serializers'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

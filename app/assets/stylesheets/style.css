@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: 'Oxygen', sans-serif;
   font-size: 16px;
-  background: #ecf0f1;
+  background: #fff;
 }
 
 #logo {
@@ -49,7 +49,7 @@ body {
 #posts, #watchlists {
   padding: 20px;
   border-radius: 4px;
-  background: #ecf0f1;
+  background: #fff;
 }
 
 .eachpost, .eachwatchlist {
@@ -160,13 +160,13 @@ border-right:1px solid #EDEBEB;
 }
 
 .user-numbers-container {
-  background: #fff;
+  background: #f7f7f7;
   border-radius: 3px;
 }
 
 #form_container_inner {
   padding: 10px;
-  background: #fff;
+  background: #f7f7f7;
   border-radius: 3px;
   border: 1px solid #EDEBEB;
   margin: 0 0 20px 0;

@@ -25,4 +25,9 @@ before_filter :authenticate_user!
     render json: @users
   end
 
+  def user
+    
+    binding.pry
+  end
+
 end

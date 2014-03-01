@@ -7,6 +7,7 @@ routes: {
     "": "index",
     "watchlist": "watchlist",
     "posts":"posts",
+    "users/:username":"show",
     // "posts/:id": "show",
     // "posts/:id/edit": "edit",
     // "posts/new" : "newpost"
@@ -64,8 +65,13 @@ routes: {
     $('#watchlists').empty();
   },
 
- 
+  show: function (username) {
+    this.user = new User ({username: username});
+    console.log(this.user)
+    this.userview = new UserView ({model: this.user});
+  }
 
+ 
   // show: function(id){
   //   this.posts.focusOnpost(id);
   // },

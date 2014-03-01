@@ -1,6 +1,5 @@
 User = Backbone.Model.extend({
- 
-  url: "/users"
 
+  url: "/user"
 
 })

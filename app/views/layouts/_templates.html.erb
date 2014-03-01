@@ -1,55 +1,69 @@
 <script id="postview" type="text/x-underscore-template" class="col-sm-3">
-<p>Message: {{= message}}</p>
-<p>Category: {{= item_category}}
-<p>Name: {{=item_name}} </p>
+<div class="category">
+{{= item_category}}
+</div>
+<h2>{{=item_name}} </h2>
+<p>User says: "{{= message}}"</p>
+
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-<p> <button class='destroy'>Delete</button>
-<button class='watch'>Add to Watchlist</button>
-</div>
-<div class='form hidden'>
-<form>
-<p> Message: <input type='text' name='message' class='editmessage'>
-</form>
-</div>
+{{ if ( Hubub.currentuser.attributes.user_id === user_id )  {   }}
+
+<button class='destroy btn btn-primary btn-xs'>Delete</button>
+
+{{  }else{  }}
+
+<button class='watch btn btn-primary btn-xs'>Add to Watchlist</button>
+
+{{   }  }}
 </script>
 
 <script id="userview" type="text/x-underscore-template" class="col-sm-3">
-<div>
-<p>Name: {{= name}}</p>
-<p>Username: {{= username}}</p>
-<p>Posts: {{= posts}}</a></p>
-<p>Followers: {{= followers}}</a></p>
-<p>Following: {{= followed_users}}</a></p>
-<p> 
+<div class="row">
+  <div class="col-md-12 user-info">
+    <h2>{{= name}}</h2>
+    <p>{{= username}}</p>
+    <div class="col-md-12 user-numbers-container">
+      <div class="col-md-4 user-numbers">Posts<br> {{= posts}}</div>
+      <div class="col-md-4 user-numbers middle">Followers<br> {{= followers}}</div>
+      <div class="col-md-4 user-numbers">Following<br> {{= followed_users}}</div>
+    </div>
+  </div>
 </div>
 </script>
 
 <script id="currentuserview" type="text/x-underscore-template" class="col-sm-3">
-<div>
-<p>Name: {{= name}}</p>
-<p>Username: {{= username}}</p>
-<p>Posts: {{= posts}}</a></p>
-<p>Followers: {{= followers}}</a></p>
-<p>Following: {{= followed_users}}</a></p>
-<p> 
+<div class="row">
+  <div class="col-md-12 user-info">
+    <h2>{{= name}}</h2>
+    <p>{{= username}}</p>
+    <div class="col-md-12 user-numbers-container">
+      <div class="col-md-4 user-numbers">Posts<br> {{= posts}}</div>
+      <div class="col-md-4 user-numbers middle">Followers<br> {{= followers}}</div>
+      <div class="col-md-4 user-numbers">Following<br> {{= followed_users}}</div>
+    </div>
+  </div>
 </div>
 </script>
 
 
 <script id="post_form_view" type="text/x-handlebars-template">
-  <textarea placeholder="Message" id="post_message"></textarea>
-  <select id="item_itemtype">
-  <option value="Restaurant">Restaurant</option>
-  <option value="Book">Book</option>
-  <option value="Movie">Movie</option>
-  <option value="TV Show">TV Show</option>
-  <option value="Product">Product</option>
-  <option value="Link">Link</option>
-  <option value="Article">Article</option>
-  </select>
-  <input type="text" placeholder="Name" id="item_name">
-  <input type="text" placeholder="URL" id="item_url">
-  <button id="post_submit_button">Submit</button>
+  <h4>Post a Recommendation</h4>
+  <div id="form_container_inner">
+    <input type="text" placeholder="What would you like to recommend?" id="item_name">
+    <textarea placeholder="Why are you recommending it?" id="post_message" maxlength="70"></textarea>
+    <select id="item_itemtype">
+    <option value="">Choose the category...</option> //this needs a validation
+    <option value="Restaurant">Restaurant</option>
+    <option value="Book">Book</option>
+    <option value="Movie">Movie</option>
+    <option value="TV Show">TV Show</option>
+    <option value="Product">Product</option>
+    <option value="Link">Link</option>
+    <option value="Article">Article</option>
+    </select>
+    <input type="text" placeholder="URL" id="item_url">
+    <button class="btn btn-primary" id="post_submit_button">Submit</button>
+  </div>
 </script>
 
 
@@ -65,7 +79,7 @@
 <p>Category: {{= item_category}}</p>
 <p>Name: {{=item_name}} </p>
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-<p> <button class='destroy'>Delete</button><button class='update'> Update </button></p>
+<p> <button class='destroy btn btn-primary'>Remove from Watchlist</button></p>
 </div>
 <div class='form hidden'>
 <form>

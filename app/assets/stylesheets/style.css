@@ -1,5 +1,9 @@
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: "Helvetica";
+}
+
+body {
+  font-size: 16px;
 }
 
 .container.main {
@@ -7,8 +11,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-inverse {
-  background-color: #fff;
-  border-color: #fff;
+  background-color: #f7f7f7;
+  border-color: #f7f7f7;
 }
 
 .navbar-inverse .navbar-brand {
@@ -29,13 +33,32 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .eachpost {
-  border: 3px solid black;
-  margin: 1%;
-  padding: 8px;
+  box-shadow: 0 0 5px #EDEBEB;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 4px;
+  position: relative;
 }
+
+.eachpost h2 {
+  margin: 0 0 12px 0;
+}
+
+.category {
+  position: absolute;
+  top:0;
+  right:0;
+  padding:4px 10px;
+  background: #f7f7f7;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
 .eachwatchlist {
-  border: 3px solid red;
-  margin: 1%;
+  box-shadow: 0 0 5px red;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .eachpost .editing .edit {
@@ -50,6 +73,15 @@ body, h1, h2, h3, h4, h5, h6 {
 
 input, textarea, select{
   width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  margin: 8px 0;
+  border: 1px solid #EDEBEB;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 60px;
 }
 
 #search_form {
@@ -58,4 +90,35 @@ input, textarea, select{
 
 input#search_field {
   width: 150px;
+}
+
+.user-numbers {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.middle {
+  border-right:1px solid #EDEBEB;
+  border-left:1px solid #EDEBEB;
+}
+
+.user-numbers-container {
+  background: #f7f7f7;
+  border-radius: 4px;
+}
+
+#form_container_inner {
+  padding: 10px;
+  background: #f7f7f7;
+  border-radius: 4px;
+  border: 1px solid #EDEBEB;
+  margin: 0 0 20px 0;
+}
+
+#current_user_container {
+  margin: 0 0 30px 0;
+}
+
+.btn {
+  text-shadow: 1px 1px 1px #000;
 }

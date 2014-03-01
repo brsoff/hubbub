@@ -7,6 +7,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: 'Oxygen', sans-serif;
   font-size: 16px;
+  background: #ecf0f1;
 }
 
 #logo {
@@ -24,7 +25,8 @@ body {
 .navbar-inverse {
   background-color: #fff;
   border-color: #fff;
-  border-bottom: 1px solid #f7f7f7;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 0 5px #f7f7f7;
 }
 
 .navbar-inverse .navbar-brand {
@@ -47,7 +49,7 @@ body {
 #posts, #watchlists {
   padding: 20px;
   border-radius: 4px;
-  background: #f7f7f7;
+  background: #ecf0f1;
 }
 
 .eachpost, .eachwatchlist {
@@ -158,13 +160,13 @@ border-right:1px solid #EDEBEB;
 }
 
 .user-numbers-container {
-  background: #f7f7f7;
+  background: #fff;
   border-radius: 3px;
 }
 
 #form_container_inner {
   padding: 10px;
-  background: #f7f7f7;
+  background: #fff;
   border-radius: 3px;
   border: 1px solid #EDEBEB;
   margin: 0 0 20px 0;

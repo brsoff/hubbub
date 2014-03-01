@@ -15,7 +15,6 @@ PostView = Backbone.View.extend({
   },
 
 
-  // template: _.template($("#postview").html()),
 
   render: function (){
     console.log("TEST")
@@ -41,8 +40,7 @@ PostView = Backbone.View.extend({
   // },
 
   watch: function (){
-    // console.log("to do")
-    Hubub.watchlists.add(this.model)
+    Hubub.watchlists.add(this.model).save()
   }
 
 });

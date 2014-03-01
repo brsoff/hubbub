@@ -18,4 +18,8 @@ WdiProject3::Application.routes.draw do
   get "/user" => "users#user"
 
   get '/search' => "users#search"
+
+  post "/follow" => "follows#follow"
+
+  post "/unfollow" => "follows#unfollow"
 end

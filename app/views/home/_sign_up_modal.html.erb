@@ -19,9 +19,13 @@ Sign Up
 
 <%= f.text_field :username, :autofocus => true %></div>
 
+<div><%= f.label :name %><br />
+
+<%= f.text_field :name, :autofocus => false %></div>
+
 <div><%= f.label :email %><br />
 
-<%= f.email_field :email, :autofocus => true %></div>
+<%= f.email_field :email, :autofocus => false %></div>
 
 <div><%= f.label :password %><br />
 

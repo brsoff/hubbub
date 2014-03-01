@@ -21,6 +21,7 @@ SearchFormView = Backbone.View.extend({
       traditional: true,
       data: {name: $('#search_field').val()}
     })
+    $('#id_search').html("");
     $('#id_search').html(Hubub.searchUsersView.render().el);
   }
 

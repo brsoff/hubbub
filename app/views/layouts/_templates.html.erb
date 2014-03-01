@@ -16,7 +16,7 @@
 <script id="userview" type="text/x-underscore-template" class="col-sm-3">
 <div>
 <p>Name: {{= name}}</p>
-<p>Username: {{= username}}
+<p>Username: {{= username}}</p>
 <p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
 <p>Following: {{= followed_users}}</a></p>
@@ -27,7 +27,7 @@
 <script id="currentuserview" type="text/x-underscore-template" class="col-sm-3">
 <div>
 <p>Name: {{= name}}</p>
-<p>Username: {{= username}}
+<p>Username: {{= username}}</p>
 <p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
 <p>Following: {{= followed_users}}</a></p>
@@ -62,14 +62,14 @@
 <script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
 <span class='active'>Watchlist</span>
 <p>Message: {{= message}}</p>
-<p>Category: {{= item_category}}
+<p>Category: {{= item_category}}</p>
 <p>Name: {{=item_name}} </p>
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-<p> <button class='destroy'>Delete</button><button class='update'> Update </button>
+<p> <button class='destroy'>Delete</button><button class='update'> Update </button></p>
 </div>
 <div class='form hidden'>
 <form>
-<p> Message: <input type='text' name='message' class='editmessage'>
+<p> Message: <input type='text' name='message' class='editmessage'></p>
 </form>
 </div>
 </script>
@@ -80,5 +80,15 @@
 <p>Posts: {{= posts}}</a></p>
 <p>Followers: {{= followers}}</a></p>
 <p>Following: {{= followed_users}}</a></p>
-<button class="btn btn-primary">Follow</button>
+
+{{ if ( Hubub.currentuser.attributes.followed_ids.indexOf(user_id) != -1 )  {   }}
+
+ <button class="btn btn-primary">Unfollow</button>
+
+{{  }else{  }}
+
+  <button class="btn btn-primary">Follow</button>
+
+{{   }  }}
+
 </script>

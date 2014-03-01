@@ -1,9 +1,12 @@
 CurrentUserView = Backbone.View.extend({
 
-  initialize: function () {
-    this.template = _.template($('#currentuserview').html());
-
-  },
+  initialize: function() {
+          _.bindAll(this, 'render');
+          if(this.model) {
+          this.model.on('change', this.render, this);
+          }
+         this.template = _.template($('#currentuserview').html());
+    },
 
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));

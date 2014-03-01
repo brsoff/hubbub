@@ -42,9 +42,6 @@ SearchUserView = Backbone.View.extend({
         })
       }
     })
-
-    Hubbub.currentuserview.render();
-    Hubbub.postsView.render();
   },
 
   unfollow: function() {

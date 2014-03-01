@@ -1,7 +1,7 @@
 SearchUsersView = Backbone.View.extend({
 
   initialize: function(){
-    this.collection.on('add', this.addOne, this);
+    this.collection.on('add', this.addAll, this);
     this.collection.on('reset', this.addAll, this);
   },
 
@@ -16,7 +16,7 @@ SearchUsersView = Backbone.View.extend({
   },
 
   addOne: function(searchItem){
-    this.$el.empty();
+    // this.$el.empty();
     var searchUserView = new SearchUserView({model: searchItem});
     console.log(this.$el);
     this.$el.prepend(searchUserView.render().$el)

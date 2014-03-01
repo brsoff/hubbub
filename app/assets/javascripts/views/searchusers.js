@@ -16,6 +16,7 @@ SearchUsersView = Backbone.View.extend({
   },
 
   addOne: function(searchItem){
+    this.$el.empty();
     var searchUserView = new SearchUserView({model: searchItem});
     console.log(this.$el);
     this.$el.prepend(searchUserView.render().$el)

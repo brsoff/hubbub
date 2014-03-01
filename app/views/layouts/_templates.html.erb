@@ -94,7 +94,9 @@
 </div>
 </div>
 
-{{ if ( Hubub.currentuser.attributes.followed_ids.indexOf(user_id) != -1 )  {   }}
+{{ var id_array = Hubub.currentuser.attributes.followed_ids }}
+
+{{ if ( id_array.indexOf(user_id) != -1 )  {   }}
 
  <button class="unfollow btn btn-danger btn-sm">Unfollow</button>
 

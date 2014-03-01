@@ -6,12 +6,13 @@ SearchUsersView = Backbone.View.extend({
   },
 
   render: function (){
-    this.addAll()
+    this.addAll();
     return this;
   },
 
   addAll: function(){
     this.$el.empty();
+    console.log(this)
     this.collection.forEach(this.addOne, this);
   },
 

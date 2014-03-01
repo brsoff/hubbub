@@ -31,19 +31,23 @@ SearchUserView = Backbone.View.extend({
       data: params,
       dataType: "json",
       success: function(data){
-        console.log(data)
+
+        Hubub.currentuser.fetch({
+          success: function () {
+            Hubub.searchCollection.fetch({
+            traditional: true,
+            data: {name: $('#search_field').val()}
+            })
+          }
+        })
       }
     })
   },
 
   unfollow: function() {
-    var self = this;
-    console.log("clicked unfollow")
     var current_user_id = Hubub.currentuser.attributes.user_id;
-    console.log(current_user_id);
     var unfollow_id = $('.user_search_data').attr("data-id");
     var unfollow_button = $('.user_search_data').find('.unfollow');
-    console.log(unfollow_id);
 
     var params = {
       current_user_id: current_user_id,
@@ -56,18 +60,21 @@ SearchUserView = Backbone.View.extend({
       data: params,
       dataType: "json",
       success: function(data){
-        console.log(data)
-        console.log(self)
-        self.render();
+        Hubub.currentuser.fetch({
+          success: function () {
+            Hubub.searchCollection.fetch({
+            traditional: true,
+            data: {name: $('#search_field').val()
+              }
+            })
+          }
+        })
       }
     })
   },
 
   render: function (){
-    console.log("SEARCH")
-    
     this.$el.html(this.template(this.model.toJSON()));
- 
     return this;
 
   },

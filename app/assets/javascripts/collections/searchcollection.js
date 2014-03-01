@@ -11,15 +11,5 @@ SearchCollection = Backbone.Collection.extend({
   hideModel: function(model){
     model.trigger('hide');
   },
-  // Not working  
-  // focusOnpost: function(id) {
-  //   var modelsToRemove = this.filter(function(post){
-  //     return post.id != id;
-  //   });
-
-  //   this.remove(modelsToRemove);
-  // }
-
-
 
 });

@@ -28,13 +28,11 @@ routes: {
     var currentuser_view = this.currentuserview;
     this.currentuser.fetch({
       success: function (model) {
-        console.log(model)
         $('#current_user_container').html(currentuser_view.render().el);
       }
     });
     this.posts.fetch();
     this.watchlists.fetch();
-    console.log(this.currentuser)
     $('#posts').html(this.postsView.render().el);
     $('#watchlists').html(this.watchlistsView.render().el);
 

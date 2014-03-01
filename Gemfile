@@ -13,6 +13,8 @@ gem 'capybara'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'backbone-on-rails'
+gem 'carrierwave'
+gem 'fog'
 # gem 'active_model_serializers'
 
 # Use SCSS for stylesheets

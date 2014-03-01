@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :reverse_follows, foreign_key: "followed_id", class_name: "Follow", dependent: :destroy
   has_many :followers, through: :reverse_follows, source: :follower
 
+  mount_uploader :avatar_url, AvatarUploader
+
   def self.get_user_info(user)
     @user_data = {}
     @user_data["user_id"] = user.id

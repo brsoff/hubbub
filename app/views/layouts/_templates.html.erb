@@ -36,7 +36,11 @@
 <script id="currentuserview" type="text/x-underscore-template" class="col-sm-3">
 <div class="row">
   <div class="col-md-12 user-info">
-    <p style="text-align:center"><img src="{{= avatar_url.avatar_url.url }}" /></p>
+    {{ if (avatar_url.avatar_url.url == "default.png") { }}
+    <p style="text-align:center"><img src="assets/default.png" /></p> 
+    {{ } else { }}
+    <p style="text-align:center"><img src="{{= avatar_url.avatar_url.url }}" /></p> 
+    {{ } }}
     <h2>{{= name}}</h2>
     <p>{{= username}}</p>
     <div class="col-md-12 user-numbers-container">

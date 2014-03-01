@@ -40,6 +40,8 @@ SearchUserView = Backbone.View.extend({
             })
           }
         })
+        Hubbub.posts.reset();
+        Hubbub.posts.fetch();
       }
     })
   },
@@ -69,6 +71,8 @@ SearchUserView = Backbone.View.extend({
             })
           }
         })
+        Hubbub.posts.reset();
+        Hubbub.posts.fetch();
       }
     })
     

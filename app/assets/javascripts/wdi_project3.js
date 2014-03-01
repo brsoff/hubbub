@@ -14,6 +14,6 @@
 
 
 $(function(){
-  Hubub = new PostRouter;
-  Hubub.start();
+  Hubbub = new PostRouter;
+  Hubbub.start();
 })

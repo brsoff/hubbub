@@ -16,13 +16,13 @@ SearchFormView = Backbone.View.extend({
 
   executeSearch: function() {
     console.log("search clicked")
-    Hubub.searchUsersView = new SearchUsersView({collection: Hubub.searchCollection})
-    Hubub.searchCollection.fetch({
+    Hubbub.searchUsersView = new SearchUsersView({collection: Hubbub.searchCollection})
+    Hubbub.searchCollection.fetch({
       traditional: true,
       data: {name: $('#search_field').val()}
     })
     $('#id_search').html("");
-    $('#id_search').html(Hubub.searchUsersView.render().el);
+    $('#id_search').html(Hubbub.searchUsersView.render().el);
   }
 
 

@@ -6,7 +6,7 @@
 <p>User says: "{{= message}}"</p>
 
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-{{ if ( Hubub.currentuser.attributes.user_id === user_id )  {   }}
+{{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
 
 <div class="post-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
 
@@ -94,7 +94,7 @@
 </div>
 </div>
 
-{{ var id_array = Hubub.currentuser.attributes.followed_ids }}
+{{ var id_array = Hubbub.currentuser.attributes.followed_ids }}
 
 {{ if ( id_array.indexOf(user_id) != -1 )  {   }}
 

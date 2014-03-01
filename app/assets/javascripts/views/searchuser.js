@@ -15,7 +15,7 @@ SearchUserView = Backbone.View.extend({
 
   follow: function(){
     console.log("clicked follow")
-    var current_user_id = Hubub.currentuser.attributes.user_id
+    var current_user_id = Hubbub.currentuser.attributes.user_id
     console.log(current_user_id)
     var follow_id = $('.user_search_data').attr("data-id");
     console.log(follow_id)
@@ -32,9 +32,9 @@ SearchUserView = Backbone.View.extend({
       dataType: "json",
       success: function(data){
 
-        Hubub.currentuser.fetch({
+        Hubbub.currentuser.fetch({
           success: function () {
-            Hubub.searchCollection.fetch({
+            Hubbub.searchCollection.fetch({
             traditional: true,
             data: {name: $('#search_field').val()}
             })
@@ -45,7 +45,7 @@ SearchUserView = Backbone.View.extend({
   },
 
   unfollow: function() {
-    var current_user_id = Hubub.currentuser.attributes.user_id;
+    var current_user_id = Hubbub.currentuser.attributes.user_id;
     var unfollow_id = $('.user_search_data').attr("data-id");
     var unfollow_button = $('.user_search_data').find('.unfollow');
 
@@ -60,9 +60,9 @@ SearchUserView = Backbone.View.extend({
       data: params,
       dataType: "json",
       success: function(data){
-        Hubub.currentuser.fetch({
+        Hubbub.currentuser.fetch({
           success: function () {
-            Hubub.searchCollection.fetch({
+            Hubbub.searchCollection.fetch({
             traditional: true,
             data: {name: $('#search_field').val()
               }

@@ -40,7 +40,7 @@ PostView = Backbone.View.extend({
   // },
 
   watch: function (){
-    Hubub.watchlists.add(this.model).save()
+    Hubbub.watchlists.add(this.model).save()
   }
 
 });

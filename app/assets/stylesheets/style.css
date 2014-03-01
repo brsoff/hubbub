@@ -1,9 +1,20 @@
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica";
+h1, h2, h3, h4, h5, h6 {
+ /* font-family: 'Patrick Hand', cursive;*/
+ font-family: 'Oxygen', sans-serif;
+ font-weight:bold;
 }
 
 body {
+  font-family: 'Oxygen', sans-serif;
   font-size: 16px;
+}
+
+#logo {
+  margin: 10px 0;
+}
+
+#logo img {
+  width: 220px;
 }
 
 .container.main {
@@ -11,8 +22,9 @@ body {
 }
 
 .navbar-inverse {
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
+  background-color: #fff;
+  border-color: #fff;
+  border-bottom: 1px solid #f7f7f7;
 }
 
 .navbar-inverse .navbar-brand {
@@ -32,12 +44,20 @@ body {
   color: #000;
 }
 
-.eachpost {
-  box-shadow: 0 0 5px #EDEBEB;
-  margin: 20px 0;
-  padding: 15px;
+#posts, #watchlists {
+  padding: 20px;
   border-radius: 4px;
+  background: #f7f7f7;
+}
+
+.eachpost, .eachwatchlist {
+ /* box-shadow: 0 0 5px #EDEBEB;*/
+  margin: 0 0 40px 0;
+  height: 200px;
+  padding: 45px 10px 10px 30px;
+  /*border-radius: 3px;*/
   position: relative;
+  background: url("/assets/paper.png") no-repeat;
 }
 
 .eachpost h2 {
@@ -46,19 +66,22 @@ body {
 
 .category {
   position: absolute;
-  top:0;
-  right:0;
-  padding:4px 10px;
-  background: #f7f7f7;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  top:-10px;
+  right:60px;
+  padding:18px 0 0 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 0px #000;
+  text-align:center;
+  width: 180px;
+  height: 63px;
+  text-transform: uppercase;
+  background: url("/assets/tape.png") no-repeat;
 }
 
 .eachwatchlist {
-  box-shadow: 0 0 5px red;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+  box-shadow: 0 0 5px yellow;
 }
 
 .eachpost .editing .edit {
@@ -73,11 +96,11 @@ body {
 
 input, textarea, select{
   width: 100%;
-  padding: 8px;
+  padding: 3px;
   font-size: 14px;
   margin: 8px 0;
   border: 1px solid #EDEBEB;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 textarea {
@@ -104,13 +127,13 @@ input#search_field {
 
 .user-numbers-container {
   background: #f7f7f7;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 #form_container_inner {
   padding: 10px;
   background: #f7f7f7;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid #EDEBEB;
   margin: 0 0 20px 0;
 }
@@ -120,5 +143,16 @@ input#search_field {
 }
 
 .btn {
-  text-shadow: 1px 1px 1px #000;
+  border-radius: 3px;
+  box-shadow: 2px 2px #000;
+}
+
+.btn:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+#left-sidebar {
+
 }

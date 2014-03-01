@@ -8,11 +8,11 @@
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 {{ if ( Hubub.currentuser.attributes.user_id === user_id )  {   }}
 
-<button class='destroy btn btn-primary btn-xs'>Delete</button>
+<button class='destroy btn btn-inverse btn-xs'>Delete</button>
 
 {{  }else{  }}
 
-<button class='watch btn btn-primary btn-xs'>Add to Watchlist</button>
+<button class='watch btn btn-inverse btn-xs'>Add to Watchlist</button>
 
 {{   }  }}
 </script>
@@ -47,7 +47,7 @@
 
 
 <script id="post_form_view" type="text/x-handlebars-template">
-  <h4>Post a Recommendation</h4>
+  <h3>Post a Recommendation</h3>
   <div id="form_container_inner">
     <input type="text" placeholder="What would you like to recommend?" id="item_name">
     <textarea placeholder="Why are you recommending it?" id="post_message" maxlength="70"></textarea>
@@ -62,30 +62,23 @@
     <option value="Article">Article</option>
     </select>
     <input type="text" placeholder="URL" id="item_url">
-    <button class="btn btn-primary" id="post_submit_button">Submit</button>
+    <button class="btn btn-inverse btn-sm" id="post_submit_button">Submit</button>
   </div>
 </script>
 
 
 <script id="search_view" type="text/x-handlebars-template">
   <input type="text" placeholder="search term" id="search_field">
-  <a href="#search" class="btn btn-primary" id="search_submit" data-toggle="modal">Search</a>
+  <a href="#search" class="btn btn-primary btn-sm" id="search_submit" data-toggle="modal">Search</a>
 </script>
 
 
 <script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
-<span class='active'>Watchlist</span>
-<p>Message: {{= message}}</p>
-<p>Category: {{= item_category}}</p>
-<p>Name: {{=item_name}} </p>
+<div class="category">{{= item_category}}</div>
+<h2>{{=item_name}} </h2>
+<p>User says: "{{= message}}"</p>
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-<p> <button class='destroy btn btn-primary'>Remove from Watchlist</button></p>
-</div>
-<div class='form hidden'>
-<form>
-<p> Message: <input type='text' name='message' class='editmessage'></p>
-</form>
-</div>
+<p> <button class='destroy btn btn-inverse btn-sm'>Remove from Watchlist</button></p>
 </script>
 
 <script id="search_results" type"text/x-underscore-template">
@@ -97,11 +90,11 @@
 
 {{ if ( Hubub.currentuser.attributes.followed_ids.indexOf(user_id) != -1 )  {   }}
 
- <button class="btn btn-primary">Unfollow</button>
+ <button class="btn btn-inverse btn-sm">Unfollow</button>
 
 {{  }else{  }}
 
-  <button class="btn btn-primary">Follow</button>
+  <button class="btn btn-inverse btn-sm">Follow</button>
 
 {{   }  }}
 

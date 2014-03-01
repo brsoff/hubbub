@@ -7,7 +7,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-          <a class="navbar-brand" href="#">Hubbub</a>
+          <div id="logo"><%= image_tag("hubbub.png") %></div>
         </div>
         <div class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
@@ -24,6 +24,8 @@
               <% end %>
           </ul>
         </div>
-        <div id="search_form" class="pull-right"></div>
+        <div id="search_container">
+          <div id="search_form" class="pull-right"></div>
+        </div>
       </div>
     </div>

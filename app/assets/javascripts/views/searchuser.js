@@ -1,6 +1,6 @@
 SearchUserView = Backbone.View.extend({
 
-  className: 'eachpost',
+  className: 'search_result',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
@@ -11,9 +11,6 @@ SearchUserView = Backbone.View.extend({
   events: {
   
   },
-
-
-  
 
   render: function (){
     console.log("SEARCH")

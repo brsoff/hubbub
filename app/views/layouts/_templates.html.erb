@@ -84,19 +84,21 @@
 </script>
 
 <script id="search_results" type"text/x-underscore-template">
-<p>Name: {{= name}}</p>
-<p>Username: {{= username}}
-<p>Posts: {{= posts}}</a></p>
-<p>Followers: {{= followers}}</a></p>
-<p>Following: {{= followed_users}}</a></p>
+<h3>{{= name}}</h3>
+<p>{{= username}}
+<div class="row">
+  <div class="col-md-3">Posts: {{= posts}}</a></div>
+  <div class="col-md-3">Followers: {{= followers}}</div>
+  <div class="col-md-3">Following: {{= followed_users}}</div>
+</div>
 
 {{ if ( Hubub.currentuser.attributes.followed_ids.indexOf(user_id) != -1 )  {   }}
 
- <button class="btn btn-inverse btn-sm">Unfollow</button>
+ <button class="btn btn-danger btn-sm">Unfollow</button>
 
 {{  }else{  }}
 
-  <button class="btn btn-inverse btn-sm">Follow</button>
+  <button class="btn btn-primary btn-sm">Follow</button>
 
 {{   }  }}
 

@@ -84,12 +84,14 @@
 </script>
 
 <script id="search_results" type"text/x-underscore-template">
+<div data="{{= user_id}}">
 <h3>{{= name}}</h3>
 <p>{{= username}}
 <div class="row">
   <div class="col-md-3">Posts: {{= posts}}</a></div>
   <div class="col-md-3">Followers: {{= followers}}</div>
   <div class="col-md-3">Following: {{= followed_users}}</div>
+</div>
 </div>
 
 {{ if ( Hubub.currentuser.attributes.followed_ids.indexOf(user_id) != -1 )  {   }}

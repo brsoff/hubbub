@@ -10,4 +10,5 @@ portillos_post.user_name = bob.name
 portillos_post.save!
 
 follow = Follow.create(follower_id: kevin.id, followed_id: bob.id)
+
 watchlist = Watchlist.create(post: portillos_post, user: kevin)

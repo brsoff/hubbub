@@ -1,8 +1,8 @@
 SearchUsersView = Backbone.View.extend({
 
   initialize: function(){
-    this.collection.on('add', this.addAll, this);
-    this.collection.on('reset', this.addAll, this);
+    this.listenTo(this.collection, 'add', this.addAll);
+    this.listenTo(this.collection, 'reset', this.addAll);
   },
 
   render: function (){

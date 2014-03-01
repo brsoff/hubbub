@@ -40,7 +40,8 @@ routes: {
 
     // console.log(this.currentuserview.render().$el)
     
-    var postForm = new FormView();
+    this.postFormView = new PostFormView();
+    $('#form_container').html(this.postFormView.render().el)
     this.searchFormView = new SearchFormView();
     $('#search_form').html(this.searchFormView.render().el)
     

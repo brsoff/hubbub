@@ -1,19 +1,15 @@
- // NEED TO FIX THIS SO IT DOESNT APPEND MORE THAN ONE FORM
-FormView = Backbone.View.extend({
+// SUGGEST WE TRANFSFORM THIS INTO UNDERSCORE TEMPLATE AND REMOVE HANDLEBARS
+PostFormView = Backbone.View.extend({
 
   initialize: function(){
     var self = this;
-    this.$el.empty();
     this.render();
-  },
-
-  el: function(){
-    return $('#form_container')
+    this.template = _.template($('#post_form_view').html());
   },
 
   render: function (){
-    var template = Handlebars.compile( $("#post_form_view").html() );
-    this.$el.html(template);
+    this.$el.html(this.template);
+    return this
   },
 
   events: { "click #post_submit_button":"createPost" },

@@ -6,6 +6,7 @@ bob = User.create(name: "Bob Bobertson", username: "bbob", email: "bobertson87@g
 kevin = User.create(name: "Kevin Smith", username: "ksmith", email: "ksmith@gmail.com", password: "password123", avatar_url: "http://placedog.com/200/200")
 portillos_post = Post.create(message: "Great sandwiches!", item_category: "Restaurant", item_url: "http://www.portillos.com", item_name: "Portillos" )
 portillos_post.user_id = bob.id
+portillos_post.user_name = bob.name
 portillos_post.save!
 
 follow = Follow.create(follower_id: kevin.id, followed_id: bob.id)

@@ -3,7 +3,7 @@
 {{= item_category}}
 </div>
 <h2>{{=item_name}} </h2>
-<p>User says: "{{= message}}"</p>
+<p>{{= user_name }} says: "{{= message}}"</p>
 
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}

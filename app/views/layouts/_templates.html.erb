@@ -8,11 +8,11 @@
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 {{ if ( Hubub.currentuser.attributes.user_id === user_id )  {   }}
 
-<button class='destroy btn btn-inverse btn-xs'>Delete</button>
+<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
 
 {{  }else{  }}
 
-<button class='watch btn btn-inverse btn-xs'>Add to Watchlist</button>
+<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"></i></a></div>
 
 {{   }  }}
 </script>
@@ -71,7 +71,7 @@
 
 <script id="search_view" type="text/x-handlebars-template">
   <input type="text" placeholder="search term" id="search_field">
-  <a href="#search" class="btn btn-primary btn-sm" id="search_submit" data-toggle="modal">Search</a>
+  <a href="#search" class="btn btn-default btn-sm" id="search_submit" data-toggle="modal">Search</a>
 </script>
 
 
@@ -80,7 +80,7 @@
 <h2>{{=item_name}} </h2>
 <p>User says: "{{= message}}"</p>
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
-<p> <button class='destroy btn btn-inverse btn-sm'>Remove from Watchlist</button></p>
+<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
 </script>
 
 <script id="search_results" type"text/x-underscore-template">

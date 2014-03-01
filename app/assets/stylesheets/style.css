@@ -51,17 +51,21 @@ body {
 }
 
 .eachpost, .eachwatchlist {
- /* box-shadow: 0 0 5px #EDEBEB;*/
   margin: 0 0 40px 0;
   height: 200px;
   padding: 45px 10px 10px 30px;
-  /*border-radius: 3px;*/
   position: relative;
   background: url("/assets/paper.png") no-repeat;
 }
 
-.eachpost h2 {
+.eachpost h2, .eachwatchlist h2 {
   margin: 0 0 12px 0;
+}
+
+.eachpost button, .eachwatchlist button {
+  font-size: 22px;
+  width:35px;
+  height: 35px;
 }
 
 .category {
@@ -79,6 +83,34 @@ body {
   text-transform: uppercase;
   background: url("/assets/tape.png") no-repeat;
 }
+
+.post-delete-link, .post-watchlist-link {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 24px;
+
+}
+
+a.destroy {
+  color: #ccc;
+}
+
+a.watch {
+  color: #000;
+}
+
+a.destroy:hover {
+  color: #ff0000;
+  cursor:pointer;
+}
+
+a.watch:hover {
+  color: green;
+  cursor: pointer;
+}
+
+
 
 .eachwatchlist {
   box-shadow: 0 0 5px yellow;
@@ -121,7 +153,7 @@ input#search_field {
 }
 
 .middle {
-  border-right:1px solid #EDEBEB;
+border-right:1px solid #EDEBEB;
   border-left:1px solid #EDEBEB;
 }
 

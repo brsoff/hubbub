@@ -11,8 +11,9 @@ class Devise::RegistrationsController < DeviseController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    binding.pry
+
     if resource.save
+      Follow.create(followed_id: resource.id, follower_id: resource.id)
       yield resource if block_given?
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
@@ -27,7 +28,6 @@ class Devise::RegistrationsController < DeviseController
       clean_up_passwords resource
       respond_with resource
     end
-
 
   end
 
@@ -106,7 +106,6 @@ class Devise::RegistrationsController < DeviseController
   # The path used after sign up. You need to overwrite this method
   # in your own RegistrationsController.
   def after_sign_up_path_for(resource)
-    Follow.create(followed_id: resource.id, follower_id: resource.id)
     after_sign_in_path_for(resource)
   end
 

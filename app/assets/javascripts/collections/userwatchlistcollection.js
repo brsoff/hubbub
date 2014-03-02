@@ -2,7 +2,7 @@ UserWatchlistsCollection = Backbone.Collection.extend({
 
   url: '/watchlists',
 
-  model: Post,
+  model: Watchlist,
 
   initialize: function(){
     this.on('remove', this.hideModel, this);
@@ -19,7 +19,5 @@ UserWatchlistsCollection = Backbone.Collection.extend({
 
     this.remove(modelsToRemove);
   }
-
-
 
 });

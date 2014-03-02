@@ -22,8 +22,23 @@ CurrentUserPostView = Backbone.View.extend({
     this.model.destroy();
   },
 
-  watch: function (){
-    Hubbub.currentuserwatchlists.add(this.model).save()
+  watch: function (e){
+    e.preventDefault();
+    var new_watchlist = new Watchlist(this.model.attributes);
+    Hubbub.currentuserwatchlists.add(new_watchlist);
+    var params = {
+      post_id: this.model.attributes.id
+    }
+
+    $.ajax({
+      url: "/watchlists",
+      data: params,
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log(data)
+      }
+    })
   }
 
 });

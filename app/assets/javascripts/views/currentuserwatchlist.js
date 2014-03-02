@@ -23,11 +23,11 @@ CurrentUserWatchlistView = Backbone.View.extend({
     this.model.destroy();
   },
 
-  edit: function (){
-    this.$el.addClass('editing');
-    this.$form = $('.form');
-    this.$form.removeClass('hidden')
-    // this.model.set({message: input.val()}).save();
-  },
+  // edit: function (){
+  //   this.$el.addClass('editing');
+  //   this.$form = $('.form');
+  //   this.$form.removeClass('hidden')
+  //   // this.model.set({message: input.val()}).save();
+  // },
 
 });

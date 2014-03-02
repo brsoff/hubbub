@@ -5,11 +5,10 @@ class WatchlistsController < ApplicationController
     render json: @posts
   end
 
-
-
-
   def create
-    @watchlist = Watchlist.add_post(params, current_user)
+    post_id = params[:post_id].to_i
+
+    @watchlist = Watchlist.create(user_id: current_user.id, post_id: post_id)
     render json: @watchlist
   end
 

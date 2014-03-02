@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.add_post(params, user)
-    @post = Post.create(message: params[:message], user_id: user.id, item_name: params[:item_name], item_url: params[:item_url], item_category: params[:item_category], user_name: user.name)
+    @post = Post.create(message: params[:message], user_id: user.id, item_name: params[:item_name], item_url: params[:item_url], item_category: params[:item_category], user_name: user.name, username: user.username)
   end
 
 

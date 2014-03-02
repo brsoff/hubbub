@@ -3,7 +3,12 @@
 {{= item_category}}
 </div>
 <h3>{{=item_name}} </h3>
-<p>{{= user_name }} says: "{{= message}}"</p>
+
+{{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
+<p>You said: "{{= message}}"</p>
+{{   }else{    }}
+<p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
+{{  }  }}
 
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
@@ -22,7 +27,12 @@
 {{= item_category}}
 </div>
 <h2>{{=item_name}} </h2>
-<p>{{= user_name }} says: "{{= message}}"</p>
+
+{{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
+<p>You said: "{{= message}}"</p>
+{{   }else{    }}
+<p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
+{{  }  }}
 
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
 </script>

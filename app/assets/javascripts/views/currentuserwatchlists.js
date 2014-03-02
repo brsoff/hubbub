@@ -1,4 +1,4 @@
-PostsView = Backbone.View.extend({
+CurrentUserWatchlistsView = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.collection, 'add', this.addOne);
@@ -15,10 +15,9 @@ PostsView = Backbone.View.extend({
     this.collection.forEach(this.addOne, this);
   },
 
-  addOne: function(postItem){
-    var postView = new PostView({model: postItem});
-    console.log(this.$el);
-    this.$el.prepend(postView.render().$el.hide().fadeIn(500))
-  
+  addOne: function(watchlistItem){
+    var currentuserwatchlistView = new CurrentUserWatchlistView({model: watchlistItem});
+    this.$el.append(currentuserwatchlistView.render().el);
   }
+
 });

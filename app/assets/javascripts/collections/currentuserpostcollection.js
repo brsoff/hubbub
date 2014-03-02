@@ -1,6 +1,6 @@
-WatchlistsCollection = Backbone.Collection.extend({
+CurrentUserPostsCollection = Backbone.Collection.extend({
 
-  url: '/watchlists',
+  url: '/posts',
 
   model: Post,
 
@@ -12,9 +12,9 @@ WatchlistsCollection = Backbone.Collection.extend({
     model.trigger('hide');
   },
 
-  focusOnwatchlist: function(id) {
-    var modelsToRemove = this.filter(function(watchlist){
-      return watchlist.id != id;
+  focusOnpost: function(id) {
+    var modelsToRemove = this.filter(function(post){
+      return post.id != id;
     });
 
     this.remove(modelsToRemove);

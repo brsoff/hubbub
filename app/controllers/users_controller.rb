@@ -25,9 +25,11 @@ before_filter :authenticate_user!
     render json: @users
   end
 
-  def user
-    
-    binding.pry
+  def userdata
+    username = params[:username]
+    user = User.where(username: username).first
+    @user = User.get_user_info(user)
+    render json: @user
   end
 
 end

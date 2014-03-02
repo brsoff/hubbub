@@ -23,5 +23,5 @@ WdiProject3::Application.routes.draw do
 
   post "/unfollow" => "follows#unfollow"
 
-  get "/user" => "users#user"
+  get "/userdata" => "users#userdata"
 end

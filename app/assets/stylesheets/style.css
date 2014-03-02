@@ -19,14 +19,12 @@ body {
 }
 
 .container.main {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .navbar-inverse {
   background-color: #fff;
   border-color: #fff;
-  border-bottom: 1px solid #000;
-  box-shadow: 0 0 5px #f7f7f7;
 }
 
 .navbar-inverse .navbar-brand {

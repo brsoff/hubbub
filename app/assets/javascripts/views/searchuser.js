@@ -14,11 +14,8 @@ SearchUserView = Backbone.View.extend({
   },
 
   follow: function(){
-    console.log("clicked follow")
     var current_user_id = Hubbub.currentuser.attributes.user_id
-    console.log(current_user_id)
     var follow_id = $('.user_search_data').attr("data-id");
-    console.log(follow_id)
 
     var params = {
       current_user_id: current_user_id,
@@ -40,8 +37,8 @@ SearchUserView = Backbone.View.extend({
             })
           }
         })
-        Hubbub.posts.reset();
-        Hubbub.posts.fetch();
+        Hubbub.currentuserposts.reset();
+        Hubbub.currentuserposts.fetch();
       }
     })
   },
@@ -71,8 +68,8 @@ SearchUserView = Backbone.View.extend({
             })
           }
         })
-        Hubbub.posts.reset();
-        Hubbub.posts.fetch();
+        Hubbub.currentuserposts.reset();
+        Hubbub.currentuserposts.fetch();
       }
     })
     

@@ -1,4 +1,4 @@
-// THE ROUTER IS THE FIRST PLACE THE APP GOES WHEN I STARTS
+//the router is where everything starts from, like rails routes
 
 PostRouter = Backbone.Router.extend({
 routes: {
@@ -7,8 +7,10 @@ routes: {
     "posts":"posts",
     "users/:username":"show"
   },
-// THIS INITIALIZES POSTS AND WATCHLIST on 
+
   initialize: function(){
+    //when the app starts or is initiated, it needs a global current user (the user who is logged in). this initiates the current user object, their posts, watchlist, and initializes their views. 
+    //also initiates a search collection that will hold all of the things the current user searches for.
     this.currentuser = new CurrentUser();
     this.currentuserposts = new CurrentUserPostsCollection();
     this.currentuserwatchlists = new CurrentUserWatchlistsCollection();
@@ -17,21 +19,29 @@ routes: {
     this.currentuserview = new CurrentUserView({model: this.currentuser});
     this.searchCollection = new SearchCollection();
   },
-// THIS FETCHES POST AND WATCHLIST FOR THE INDEX VIEW, WHICH IS DEFAULT
+
   index: function(){
+    //the home page. setting up the view that we will use for the current user
     var currentuser_view = this.currentuserview;
+    //get the current user from rails
     this.currentuser.fetch({
       success: function (model) {
+        //on success, render the current user view in the #current_user_container element
         $('#current_user_container').html(currentuser_view.render().el);
       }
     });
+    //get the current user's posts and put them into #posts element
     this.currentuserposts.fetch();
-    this.currentuserwatchlists.fetch();
     $('#posts').html(this.currentuserpostsView.render().el);
-    // $('#watchlists').html(this.currentuserwatchlistsView.render().el);
-    
+
+    //get the current user's watchlist
+    this.currentuserwatchlists.fetch();
+
+    // inititate the form where current user can create posts and put it in #form_container element
     this.postFormView = new PostFormView();
     $('#form_container').html(this.postFormView.render().el)
+
+    // inititate the seaerch form where current user can search for other users and put it in #form_container element
     this.searchFormView = new SearchFormView();
     $('#search_form').html(this.searchFormView.render().el)
     
@@ -42,8 +52,7 @@ routes: {
   },
 
   watchlist: function(){
-
-    //this first thing will render the current user if someone refreshes watchlist link, otherwise only watchlist stuff will show up
+    //this tells the watchlist route that we'll be using the current user for the view on render, otherwise only watchlist stuff will show up
     var currentuser_view = this.currentuserview;
     this.currentuser.fetch({
       success: function (model) {
@@ -51,15 +60,18 @@ routes: {
       }
     });
 
+    //get the user's watchlist from rails, render it into #watchlists element
     this.currentuserwatchlists.fetch();
     $('#watchlists').html(this.currentuserwatchlistsView.render().el);
+
+    //empty #posts element
     $('#posts').empty();
 
   },
 
   posts: function(){
 
-    //this first thing will render the current user if someone refreshes the posts link, otherwise only the posts will show up and no user data
+    //similar to watchlist, this first thing will render the current user if someone refreshes the posts link, otherwise only the posts will show up and no user data
     var currentuser_view = this.currentuserview;
     this.currentuser.fetch({
       success: function (model) {
@@ -103,7 +115,7 @@ routes: {
         Hubbub.userwatchlists.fetch();
 
         $('#posts').html(Hubbub.userpostsView.render().el);
-        // $('#watchlists').html(Hubbub.userwatchlistsView.render().el);
+
         //remove the post form, shouldnt be able to post from another user's page
         $('#form_container').html("")
       }

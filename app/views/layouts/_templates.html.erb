@@ -70,9 +70,9 @@
     <p>{{= username}}</p>
 
     <div class="col-md-12 user-numbers-container">
-      <div class="user-numbers">Posts<br> {{= posts}}</div>
-      <div class="user-numbers middle">Followers<br> {{= followers}}</div>
-      <div class="user-numbers">Following<br> {{= followed_users}}</div>
+      <div class="col-md-4 user-numbers">Posts<br> <span class="number">{{= posts}}</span></div>
+      <div class="col-md-4 user-numbers middle">Followers<br> <span class="number">{{= followers}}</span></div>
+      <div class="col-md-4 user-numbers">Following<br> <span class="number">{{= followed_users}}</span></div>
     </div>
     
     <a href="/#/watchlist">My Watchlist</a> &middot; <a href="/#/posts">My Posts</a> &middot; <a href="/#">All Posts</a>
@@ -82,7 +82,7 @@
 
 
 <script id="post_form_view" type="text/x-underscore-template">
-  <h3>Post a Recommendation</h3>
+  <h3>Recommend something!</h3>
   <div id="form_container_inner">
   <input type="text" placeholder="What would you like to recommend?" id="item_name">
   <textarea placeholder="Why are you recommending it?" id="post_message" maxlength="70"></textarea>
@@ -98,6 +98,7 @@
   </select>
   <input type="text" placeholder="URL" id="item_url">
   <button class="btn btn-inverse btn-sm" id="post_submit_button">Submit</button>
+  <button id="close-me">Hide</button>
   </div>
 </script>
 
@@ -112,7 +113,7 @@
 <script id="watchlistview" type="text/x-underscore-template" class="col-sm-3">
 <div class="eachwatchlist-inner">
 <h4><a href={{= item_url}}>{{=item_name}}</a></h4>
-<p>{{= user_name}} says: "{{= message}}"</p>
+<p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
 Category: {{= item_category}}
 <div class="watchlist-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
 </div>

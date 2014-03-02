@@ -12,7 +12,19 @@ PostFormView = Backbone.View.extend({
     return this
   },
 
-  events: { "click #post_submit_button":"createPost" },
+  events: { 
+    "click #item_name": "revealForm",
+    "click #post_submit_button":"createPost",
+    "click #close-me":"closeForm"
+  },
+
+  closeForm: function () {
+    $("#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me").hide(300);
+  },
+
+  revealForm: function () {
+    $("#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me").show(300);
+  },
 
   createPost: function (e) {
     console.log("is this running twice?")

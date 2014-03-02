@@ -1,5 +1,7 @@
 CurrentUser = Backbone.Model.extend({
  
+ //link to fetch currentuser info
+ 
   url: "/currentuser",
 
   urlRoot: "/currentuser",

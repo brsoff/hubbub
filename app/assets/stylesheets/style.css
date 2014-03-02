@@ -155,7 +155,7 @@ a.watch:hover {
 input, textarea, select{
   width: 100%;
   padding: 3px;
-  font-size: 14px;
+  font-size: 18px;
   margin: 8px 0;
   border: 1px solid #EDEBEB;
   border-radius: 3px;
@@ -195,6 +195,15 @@ border-right:1px solid #EDEBEB;
   border: 1px solid #EDEBEB;
   margin: 0 0 20px 0;
 }
+
+#form_container h3 {
+  margin: 0 0 12px 0;
+}
+
+#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me {
+  display: none;
+}
+
 
 #current_user_container {
   margin: 0 0 30px 0;

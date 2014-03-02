@@ -12,9 +12,13 @@
 <body>
   <%= render "home/login_modal" %>
   <%= render "home/sign_up_modal" %>
-  <%= render "home/edit_modal" %>
   <%= render "layouts/header" %>
   <%= render "home/search" %>
+
+  <% if user_signed_in? %>
+    <%= render "home/edit_modal" %>
+  <% else %>
+  <% end %>
 
   <div class='container main'>
     <%= yield %>

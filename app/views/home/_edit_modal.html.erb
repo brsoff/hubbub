@@ -18,23 +18,35 @@
   <div class="form-inputs">
     <div><%= f.label :username %><br />
 
-    <%= f.text_field :username, :required => true, :autofocus => true %></div>
+    <%= f.text_field :username, :required => true, :autofocus => true, :value => current_user.username %></div>
+
+    <div><%= f.label :name %><br />
+
+    <%= f.text_field :name, :required => true, :autofocus => false, :value => current_user.name %></div>
+
+    <div><%= f.label :image %><br />
+      <% if (current_user.avatar_url.path != nil) || (current_user.avatar_url.path == "default.png") %>
+        <img src="https://s3.amazonaws.com/Hubbub-WDI/<%= current_user.avatar_url.path %>" />
+      <% else %>
+        <img src="assets/default.png" />
+      <% end %>
+    <%= f.file_field :avatar_url, :required => false, :autofocus => false %></div>
 
     <div><%= f.label :email %><br />
-    <%= f.text_field :email, :required => true, :autofocus => true %></div>
+    <%= f.text_field :email, :required => true, :autofocus => true, :value => current_user.email %></div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
     <div><%= f.label :password %><br />
-    <%= f.text_field :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %></div>
+    <%= f.password_field :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %></div>
 
     <div><%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation, :required => false %></div>
+    <%= f.password_field :password_confirmation, :required => false %></div>
 
     <div><%= f.label :current_password %><br />
-    <%= f.text_field :current_password, :hint => "we need your current password to confirm your changes", :required => true %></div>
+    <%= f.password_field :current_password, :hint => "we need your current password to confirm your changes", :required => true %></div>
   </div>
 <br />
   <%= f.submit "update", :class => 'btn btn-small btn-success' %>

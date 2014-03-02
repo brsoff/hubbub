@@ -26,4 +26,6 @@ WdiProject3::Application.routes.draw do
   get "/userdata" => "users#userdata"
 
   get "/userposts" => "posts#userposts"
+
+  get "/watchlists" => "watchlists#create"
 end

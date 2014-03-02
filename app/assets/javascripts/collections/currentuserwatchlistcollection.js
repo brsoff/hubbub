@@ -3,8 +3,6 @@ CurrentUserWatchlistsCollection = Backbone.Collection.extend({
   //url to get watchlist data for current user
   url: '/watchlists',
 
-  model: Post,
-
   initialize: function(){
     this.on('remove', this.hideModel, this);
   },

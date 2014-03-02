@@ -45,6 +45,7 @@ PostFormView = Backbone.View.extend({
     })
 
     Hubbub.currentuserposts.add(newPost).save();
-   
+    
+    this.closeForm();
   }
 });

@@ -19,7 +19,7 @@ body {
 }
 
 .container.main {
-  margin-top: 50px;
+  margin-top: 140px;
   margin-bottom: 50px;
 }
 
@@ -207,6 +207,8 @@ border-right:1px solid #EDEBEB;
 
 #current_user_container {
   margin: 0 0 30px 0;
+  position: fixed;
+  width: 25%;
 }
 
 .btn {
@@ -253,6 +255,17 @@ border-right:1px solid #EDEBEB;
   float: right;
 }
 
+/*#left-sidebar {
+  position: fixed;
+}*/
+
+@media (max-width: 993px) {
+  #current_user_container {
+    position: static;
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   #search_container {
     float: none;
@@ -260,7 +273,8 @@ border-right:1px solid #EDEBEB;
     width: 228px;
   }
   .container.main {
-    margin-top: 20px;
+    margin-top: 170px;
   }
+
 }
 

@@ -21,7 +21,13 @@ class PostsController < ApplicationController
     @post.save!
 
     render json: @post
+  end
 
+  def userposts
+    user = User.find(params[:id].to_i)
+    @posts = Post.get_posts(user)
+
+    render json: @posts
   end
 
 end

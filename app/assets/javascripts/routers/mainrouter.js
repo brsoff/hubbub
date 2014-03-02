@@ -63,6 +63,30 @@ routes: {
       success: function (data) {
         console.log(data)
 
+        //begin the non-logged-in user stuff
+        //set up the user info with info from ajax call
+        Hubbub.user = new User(data);
+        Hubbub.userview = new UserView({model: Hubbub.user});
+
+        Hubbub.userposts = new UserPostsCollection();
+        Hubbub.userpostsView = new UserPostsView({collection: Hubbub.userposts});
+
+        Hubbub.userwatchlists = new UserWatchlistsCollection();
+        Hubbub.userwatchlistsView = new UserWatchlistsView({collection: Hubbub.userwatchlists})
+
+        $('#current_user_container').html(Hubbub.userview.render().el);
+       
+        Hubbub.userposts.fetch({
+          data: $.param({
+              id: Hubbub.user.attributes.user_id
+            })
+        });
+        Hubbub.userwatchlists.fetch();
+
+        $('#posts').html(Hubbub.userpostsView.render().el);
+        $('#watchlists').html(Hubbub.userwatchlistsView.render().el);
+        //remove the post form, shouldnt be able to post from another user's page
+        $('#form_container').html("")
       }
     })
   }

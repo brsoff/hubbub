@@ -1,11 +1,11 @@
-CurrentUserPostView = Backbone.View.extend({
+UserPostView = Backbone.View.extend({
 
   className: 'eachpost',
 
   initialize: function () {
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
-    this.template = _.template($('#currentuserpostview').html());
+    this.template = _.template($('#userpostview').html());
   },
 
   events: {
@@ -23,7 +23,7 @@ CurrentUserPostView = Backbone.View.extend({
   },
 
   watch: function (){
-    Hubbub.currentuserwatchlists.add(this.model).save()
+    Hubbub.userwatchlists.add(this.model).save()
   }
 
 });

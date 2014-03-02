@@ -31,7 +31,7 @@ PostFormView = Backbone.View.extend({
       user_name: Hubbub.currentuser.attributes.name
     })
 
-    Hubbub.posts.add(newPost).save();
+    Hubbub.currentuserposts.add(newPost).save();
    
   }
 });

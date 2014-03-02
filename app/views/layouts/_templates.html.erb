@@ -1,4 +1,4 @@
-<script id="postview" type="text/x-underscore-template" class="col-sm-3">
+<script id="currentuserpostview" type="text/x-underscore-template" class="col-sm-3">
 <div class="category">
 {{= item_category}}
 </div>
@@ -17,6 +17,17 @@
 {{   }  }}
 </script>
 
+<script id="userpostview" type="text/x-underscore-template" class="col-sm-3">
+<div class="category">
+{{= item_category}}
+</div>
+<h2>{{=item_name}} </h2>
+<p>{{= user_name }} says: "{{= message}}"</p>
+
+<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+</script>
+
+
 <script id="userview" type="text/x-underscore-template" class="col-sm-3">
 <div class="row">
   <div class="col-md-12 user-info">
@@ -29,14 +40,10 @@
     <p>{{= username}}</p>
 
     <div class="col-md-12 user-numbers-container">
-      <div class="col-md-4 user-numbers">Posts<br> {{= posts}}</div>
-      <div class="col-md-4 user-numbers middle">Followers<br> {{= followers}}</div>
-      <div class="col-md-4 user-numbers">Following<br> {{= followed_users}}</div>
+      <div class="col-md-4 user-numbers">Posts<br> <span class="number">{{= posts}}</span></div>
+      <div class="col-md-4 user-numbers middle">Followers<br> <span class="number">{{= followers}}</span></div>
+      <div class="col-md-4 user-numbers">Following<br> <span class="number">{{= followed_users}}</span></div>
     </div>
-    
-    <a href="/#/watchlist">My Watchlist</a><br>
-    <a href="/#/posts">My Posts</a><br>
-    <a href="/#">All Posts</a>
   </div>
 </div>
 </script>

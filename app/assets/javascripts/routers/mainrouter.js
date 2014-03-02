@@ -42,6 +42,15 @@ routes: {
   },
 
   watchlist: function(){
+
+    //this first thing will render the current user if someone refreshes watchlist link, otherwise only watchlist stuff will show up
+    var currentuser_view = this.currentuserview;
+    this.currentuser.fetch({
+      success: function (model) {
+        $('#current_user_container').html(currentuser_view.render().el);
+      }
+    });
+
     this.currentuserwatchlists.fetch();
     $('#watchlists').html(this.currentuserwatchlistsView.render().el);
     $('#posts').empty();
@@ -49,12 +58,22 @@ routes: {
   },
 
   posts: function(){
+
+    //this first thing will render the current user if someone refreshes the posts link, otherwise only the posts will show up and no user data
+    var currentuser_view = this.currentuserview;
+    this.currentuser.fetch({
+      success: function (model) {
+        $('#current_user_container').html(currentuser_view.render().el);
+      }
+    });
+
     this.currentuserposts.fetch();
     $('#posts').html(this.currentuserpostsView.render().el);
     $('#watchlists').empty();
   },
 
   show: function (username) {
+    // to get individual users data we'll need to make an ajax call and pass in the user name. urls by username is probably a bit more exciting than urls by id, so we'll .where the username in the controller to find the right user
     $.ajax({
       url: "/userdata",
       data: {username: username},
@@ -64,7 +83,7 @@ routes: {
         console.log(data)
 
         //begin the non-logged-in user stuff
-        //set up the user info with info from ajax call
+        //set up the user info with info from ajax call. this is pretty much the same process as what's happening with current user above
         Hubbub.user = new User(data);
         Hubbub.userview = new UserView({model: Hubbub.user});
 

@@ -39,14 +39,14 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <div><%= f.label :password %><br />
-    <%= f.password_field :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %></div>
+    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br />
+    <%= f.password_field :password, :autocomplete => "off", :required => false %></div>
 
-    <div><%= f.label :password_confirmation %><br />
+    <div><%= f.label :password_confirmation %> <i>(leave blank if you don't want to change it)</i> <br />
     <%= f.password_field :password_confirmation, :required => false %></div>
 
-    <div><%= f.label :current_password %><br />
-    <%= f.password_field :current_password, :hint => "we need your current password to confirm your changes", :required => true %></div>
+    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, :required => true %></div>
   </div>
 <br />
   <%= f.submit "update", :class => 'btn btn-small btn-success' %>

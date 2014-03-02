@@ -27,5 +27,5 @@ WdiProject3::Application.routes.draw do
 
   get "/userposts" => "posts#userposts"
 
-  # post "/watchlists/:id" => "watchlists#create"
+  get "/watchlists" => "watchlists#create"
 end

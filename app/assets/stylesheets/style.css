@@ -259,6 +259,11 @@ border-right:1px solid #EDEBEB;
   position: fixed;
 }*/
 
+.modal-body img {
+  width: 150px;
+  height: 150px;
+}
+
 @media (max-width: 993px) {
   #current_user_container {
     position: static;

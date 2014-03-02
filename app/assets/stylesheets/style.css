@@ -20,11 +20,17 @@ body {
 
 .container.main {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .navbar-inverse {
   background-color: #fff;
   border-color: #fff;
+  padding: 10px 0 0 0;
+}
+
+.navbar.navbar-inverse .container {
+  padding: 0 50px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -48,18 +54,39 @@ body {
   padding: 20px;
   border-radius: 4px;
   background: #fff;
+  overflow: auto;
 }
 
-.eachpost, .eachwatchlist {
+.eachpost {
   margin: 0 0 40px 0;
   height: 200px;
   padding: 45px 10px 10px 30px;
   position: relative;
   background: url("/assets/paper.png") no-repeat;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 18px
 }
 
-.eachpost h2, .eachwatchlist h2 {
+.eachwatchlist {
+  font-size: 14px;
+  font-family: 'Oxygen', sans-serif;
+  width: 33%;
+  float: left;
+}
+
+.eachwatchlist-inner {
+  margin: 10px 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.eachwatchlist h3 {
+  font-family: 'Oxygen', sans-serif;
+}
+
+.eachpost h3 {
   margin: 0 0 12px 0;
+  font-family: 'Oxygen', sans-serif;
 }
 
 .eachpost button, .eachwatchlist button {
@@ -75,13 +102,14 @@ body {
   padding:18px 0 0 0;
   font-size: 20px;
   font-weight: bold;
+  text-align:center;
   color: #fff;
   text-shadow: 2px 2px 0px #000;
-  text-align:center;
   width: 180px;
   height: 63px;
   text-transform: uppercase;
   background: url("/assets/tape.png") no-repeat;
+  font-family: 'Oxygen', sans-serif;
 }
 
 .post-delete-link, .post-watchlist-link {
@@ -89,7 +117,11 @@ body {
   bottom: 25px;
   right: 25px;
   font-size: 24px;
+}
 
+.watchlist-delete-link {
+  font-size: 16px;
+  float:right;
 }
 
 a.destroy {
@@ -108,12 +140,6 @@ a.destroy:hover {
 a.watch:hover {
   color: green;
   cursor: pointer;
-}
-
-
-
-.eachwatchlist {
-  box-shadow: 0 0 5px yellow;
 }
 
 .eachpost .editing .edit {
@@ -203,3 +229,29 @@ border-right:1px solid #EDEBEB;
 .number {
   font-size: 24px;
 }
+
+.user-numbers-container {
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.user-numbers {
+  width: 33%;
+  float:left;
+}
+
+#search_container {
+  float: right;
+}
+
+@media (max-width: 768px) {
+  #search_container {
+    float: none;
+    margin: 0 auto;
+    width: 228px;
+  }
+  .container.main {
+    margin-top: 20px;
+  }
+}
+

@@ -28,7 +28,7 @@ routes: {
     this.currentuserposts.fetch();
     this.currentuserwatchlists.fetch();
     $('#posts').html(this.currentuserpostsView.render().el);
-    $('#watchlists').html(this.currentuserwatchlistsView.render().el);
+    // $('#watchlists').html(this.currentuserwatchlistsView.render().el);
     
     this.postFormView = new PostFormView();
     $('#form_container').html(this.postFormView.render().el)
@@ -84,7 +84,7 @@ routes: {
         Hubbub.userwatchlists.fetch();
 
         $('#posts').html(Hubbub.userpostsView.render().el);
-        $('#watchlists').html(Hubbub.userwatchlistsView.render().el);
+        // $('#watchlists').html(Hubbub.userwatchlistsView.render().el);
         //remove the post form, shouldnt be able to post from another user's page
         $('#form_container').html("")
       }

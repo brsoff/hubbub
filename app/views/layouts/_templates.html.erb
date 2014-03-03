@@ -11,8 +11,8 @@
 
 {{ }else{ }}
 
-{{ if (Hubbub.currentuser.attributes.avatar_url.avatar_url.url != "default.png") { }}
-        <img src="{{= Hubbub.currentuser.attributes.avatar_url.avatar_url.url }}" />
+{{ if (Hubbub.user.attributes.avatar_url.avatar_url.url != "default.png") { }}
+        <img src="{{= Hubbub.user.attributes.avatar_url.avatar_url.url }}" />
 
       {{ } else {  }}
         <img src="assets/default.png" />

@@ -8,16 +8,9 @@
 <div class="post_image">
 {{ if (item_image_url) { }}
 <img src="{{= item_image_url}}" />
-
 {{ }else{ }}
-
-{{ if (Hubbub.user.attributes.avatar_url.avatar_url.url != "default.png") { }}
-        <img src="{{= Hubbub.user.attributes.avatar_url.avatar_url.url }}" />
-
-      {{ } else {  }}
-        <img src="assets/default.png" />
-        {{ } }}
-        {{ } }}
+  <img src="assets/no_image_placeholder.png" />
+{{ } }}
 </div>
 <h3>{{=item_name}} </h3>
 

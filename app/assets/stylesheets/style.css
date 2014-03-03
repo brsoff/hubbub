@@ -214,8 +214,9 @@ input, textarea, select{
   font-size: 18px;
   text-indent: 5px;
   margin: 8px 0;
-  border: 1px solid #EDEBEB;
+  border: 1px solid #ccc;
   border-radius: 3px;
+  background: #F7F2E0;
 }
 
 textarea {
@@ -235,6 +236,7 @@ input#search_field {
   font-size: 14px;
   position: relative;
   top: 3px;
+  background: #fff;
 }
 
 .user-numbers {

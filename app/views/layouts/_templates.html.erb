@@ -63,7 +63,6 @@
 
 <p>Link: <a href={{= item_url}} target="_blank">{{=item_name}}</a></p>
 
-{{console.log (Hubbub.currentuser.attributes.user_id + " " + user_id)}}
 
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
 
@@ -82,7 +81,7 @@
 
 <script id="userview" type="text/x-underscore-template" class="col-sm-3">
 <div class="row">
-  <div class="col-md-12 user-info">
+  <div class="col-md-12 user-info" data-id="{{= user_id}}">
     {{ if (avatar_url.avatar_url.url == "default.png") { }}
     <p style="text-align:center"><img src="assets/default.png" /></p> 
     {{ } else { }}
@@ -96,6 +95,21 @@
       <div class="col-md-4 user-numbers middle">Followers<br> <span class="number">{{= followers}}</span></div>
       <div class="col-md-4 user-numbers">Following<br> <span class="number">{{= followed_users}}</span></div>
     </div>
+
+    {{ var id_array = Hubbub.currentuser.attributes.followed_ids }}
+
+    {{ if (Hubbub.currentuser.attributes.user_id == user_id)  }}
+
+    {{ else if ( id_array.indexOf(user_id) != -1 )  {   }}
+
+     <button class="unfollow btn btn-danger btn-lg">Unfollow {{= username }}</button>
+
+    {{  }else{  }}
+
+      <button class="follow btn btn-primary btn-lg">Follow {{= username }}</button>
+
+    {{   }  }}
+
   </div>
 </div>
 </script>
@@ -148,7 +162,7 @@
 
 
 <script id="search_view" type="text/x-underscore-template">
-  <input type="text" placeholder="search term" id="search_field">
+  <input type="text" placeholder="user or username" id="search_field">
   <a href="#search" class="btn btn-default btn-xs" id="search_submit" data-toggle="modal">Search</a>
 </script>
 
@@ -172,7 +186,7 @@ Category: {{= item_category}}
 {{ } else { }}
 <div class="user_search_data" data-id="{{= user_id}}">
   <h3>{{= name}}</h3>
-  <p>{{= username}}
+  <p><a href="/#/users/{{= username }}">{{= username }}</a></p>
   <div class="row">
     <div class="col-md-3">Posts: {{= posts}}</a></div>
     <div class="col-md-3">Followers: {{= followers}}</div>

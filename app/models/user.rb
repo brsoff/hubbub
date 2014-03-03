@@ -41,5 +41,10 @@ class User < ActiveRecord::Base
     return @users_data
   end
 
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    User.find(:all, :conditions => ['lower(name) LIKE ? OR lower(username) LIKE ?', search_condition.downcase, search_condition.downcase])
+  end
+
 
 end

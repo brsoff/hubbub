@@ -167,28 +167,35 @@ Category: {{= item_category}}
 
 
 <script id="search_results" type"text/x-underscore-template">
+{{ if (!this.model.attributes.user_id)  { }}
+<p>You have not entered a valid search term!</p>
+{{ } else { }}
 <div class="user_search_data" data-id="{{= user_id}}">
-<h3>{{= name}}</h3>
-<p>{{= username}}
-<div class="row">
-  <div class="col-md-3">Posts: {{= posts}}</a></div>
-  <div class="col-md-3">Followers: {{= followers}}</div>
-  <div class="col-md-3">Following: {{= followed_users}}</div>
-</div>
-</div>
+  <h3>{{= name}}</h3>
+  <p>{{= username}}
+  <div class="row">
+    <div class="col-md-3">Posts: {{= posts}}</a></div>
+    <div class="col-md-3">Followers: {{= followers}}</div>
+    <div class="col-md-3">Following: {{= followed_users}}</div>
+  </div>
+  </div>
 
-{{ var id_array = Hubbub.currentuser.attributes.followed_ids }}
+  {{ var id_array = Hubbub.currentuser.attributes.followed_ids }}
 
-{{ if (Hubbub.currentuser.attributes.user_id == user_id)  }}
+  {{ if (Hubbub.currentuser.attributes.user_id == user_id)  }}
 
-{{ else if ( id_array.indexOf(user_id) != -1 )  {   }}
+  {{ else if ( id_array.indexOf(user_id) != -1 )  {   }}
 
- <button class="unfollow btn btn-danger btn-sm">Unfollow</button>
+   <button class="unfollow btn btn-danger btn-sm">Unfollow</button>
 
-{{  }else{  }}
+  {{  }else{  }}
 
-  <button class="follow btn btn-primary btn-sm">Follow</button>
+    <button class="follow btn btn-primary btn-sm">Follow</button>
 
-{{   }  }}
+  {{   }  }}
+  {{   }  }}
+  
+  
+
 
 </script>

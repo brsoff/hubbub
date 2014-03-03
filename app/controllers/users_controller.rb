@@ -20,9 +20,13 @@ before_filter :authenticate_user!
   end
 
   def search
-    users = User.where("name like ?", "%#{params[:name]}%")
-    @users = User.get_all_users(users)
-    render json: @users
+    if params[:name] == ""
+      render json: { }
+    else
+      users = User.search(params[:name])
+      @users = User.get_all_users(users)
+      render json: @users
+    end
   end
 
   def userdata

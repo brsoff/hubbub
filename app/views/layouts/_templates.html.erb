@@ -12,7 +12,7 @@
 {{ }else{ }}
 
 {{ if (Hubbub.currentuser.attributes.avatar_url.avatar_url.url != "default.png") { }}
-        <img src="https://s3.amazonaws.com/Hubbub-WDI/{{= Hubbub.currentuser.attributes.avatar_url.avatar_url.url }}" />
+        <img src="{{= Hubbub.currentuser.attributes.avatar_url.avatar_url.url }}" />
 
       {{ } else {  }}
         <img src="assets/default.png" />

@@ -21,7 +21,21 @@ CurrentUserPostView = Backbone.View.extend({
   delete: function (){
     var self = this.model;
     this.$el.fadeOut(300, function () {
-        self.destroy();
+        self.destroy({
+          success: function () {
+            console.log("destroyed")
+          Hubbub.currentuser.fetch({
+          success: function () {
+              Hubbub.searchCollection.fetch({
+              traditional: true,
+              data: {name: $('#search_field').val()}
+              })
+             }
+          })
+            Hubbub.currentuserposts.reset();
+            Hubbub.currentuserposts.fetch();
+          }
+        });
     })
   },
 

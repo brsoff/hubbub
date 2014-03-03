@@ -49,6 +49,17 @@ PostFormView = Backbone.View.extend({
     })
 
     Hubbub.currentuserposts.add(newPost).save();
+
+    Hubbub.currentuser.fetch({
+      success: function () {
+          Hubbub.searchCollection.fetch({
+          traditional: true,
+          data: {name: $('#search_field').val()}
+          })
+         }
+      })
+    Hubbub.currentuserposts.reset();
+    Hubbub.currentuserposts.fetch();
     
     this.closeForm();
   }

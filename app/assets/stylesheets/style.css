@@ -75,6 +75,10 @@ color: yellow;
   overflow: auto;
 }
 
+#posts {
+  padding: 0;
+}
+
 #watchlists {
   background: url("/assets/cork.jpg");
   border: 2px solid #462727;

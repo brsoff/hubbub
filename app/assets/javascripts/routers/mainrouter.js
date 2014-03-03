@@ -37,7 +37,7 @@ routes: {
     this.currentuserwatchlists.fetch({
       success: function () {
 
-        $("#posts, #watchlists, form_container, #search_form").empty();
+        $("#posts, #watchlists_holder, form_container, #search_form").empty();
 
         //get the current user's posts and put them into #posts element
         Hubbub.currentuserposts.fetch();
@@ -71,8 +71,12 @@ routes: {
 
     //get the user's watchlist from rails, render it into #watchlists element
     this.currentuserwatchlists.fetch();
-    $("#watchlists, #form_container, #posts").empty();
+    $("#watchlists_holder, #form_container, #posts").empty();
+    var $watchlists = $("<div>").attr("id", "watchlists")
+    $("#watchlists_holder").append($watchlists);
     $('#watchlists').html(this.currentuserwatchlistsView.render().el);
+    $("#watchlists_holder").prepend("<h1>Watchlist</h1>")
+
     Hubbub.currentuserwatchlistsView.delegateEvents();
     // $('#form_container').html("");
     // $('#posts').html("");
@@ -88,7 +92,7 @@ routes: {
       }
     });
 
-    $('#search_form, #form_container, #watchlists').empty();
+    $('#search_form, #form_container, #watchlists_holder').empty();
     $('#search_form').html(Hubbub.searchFormView.render().el);
     $('#form_container').html(Hubbub.postFormView.render().el);
     this.currentuserposts.fetch();
@@ -140,7 +144,7 @@ routes: {
           }
         });
 
-        $('#posts, #form_container, #search_form, #watchlists').empty();
+        $('#posts, #form_container, #search_form, #watchlists_holder').empty();
         $('#posts').html(Hubbub.userpostsView.render().el);
         $('#search_form').html(Hubbub.searchFormView.render().el);
         Hubbub.userpostsView.delegateEvents();

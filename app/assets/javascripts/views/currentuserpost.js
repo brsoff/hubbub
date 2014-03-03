@@ -19,16 +19,17 @@ CurrentUserPostView = Backbone.View.extend({
   },
 
   delete: function (){
-    this.model.destroy();
+    var self = this.model;
+    this.$el.fadeOut(300, function () {
+        self.destroy();
+    })
   },
 
   watch: function (e){
     e.preventDefault();
     var new_watchlist = new Watchlist(this.model.attributes);
     Hubbub.currentuserwatchlists.add(new_watchlist);
-    var params = {
-      post_id: this.model.attributes.id
-    }
+    var params = { post_id: this.model.attributes.id }
 
     $.ajax({
       url: "/watchlists",
@@ -37,6 +38,9 @@ CurrentUserPostView = Backbone.View.extend({
       dataType: "json",
       success: function (data) {
         console.log(data)
+        $('#posts').empty();
+        $('#posts').html(Hubbub.currentuserpostsView.render().el);
+        Hubbub.currentuserpostsView.delegateEvents();
       }
     })
   }

@@ -7,7 +7,6 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: 'Oxygen', sans-serif;
   font-size: 16px;
-  background: #fff;
 }
 
 #logo {
@@ -19,18 +18,28 @@ body {
 }
 
 .container.main {
-  margin-top: 140px;
-  margin-bottom: 50px;
+  margin-top: 75px;
+  padding-top: 55px;
+  padding-bottom: 100px;
+  background: #fff;
+  border-radius: 5px;
 }
 
 .navbar-inverse {
-  background-color: #fff;
+  /*background-color: #fff;*/
+    background: #666EFC;
   border-color: #fff;
-  padding: 10px 0 0 0;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+
+.navbar-toggle {
+background-color: #333;
 }
 
 .navbar.navbar-inverse .container {
-  padding: 0 50px;
+/*  padding: 0 50px;*/
 }
 
 .navbar-inverse .navbar-brand {
@@ -50,6 +59,15 @@ body {
   color: #000;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+color: #fff;
+text-shadow: 1px 1px 0px #000;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+color: yellow;
+}
+
 #posts, #watchlists {
   padding: 20px;
   border-radius: 4px;
@@ -63,8 +81,11 @@ body {
   padding: 45px 10px 10px 30px;
   position: relative;
   background: url("/assets/paper.png") no-repeat;
-  font-family: 'Gloria Hallelujah', cursive;
   font-size: 18px
+}
+
+span.message {
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .eachwatchlist {
@@ -112,20 +133,24 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
-.post-delete-link, .post-watchlist-link {
+.post-delete-link, .post-watchlist-link, .post-watchlisted-link {
   position: absolute;
+  font-family: 'Oxygen', sans-serif;
   bottom: 25px;
   right: 25px;
-  font-size: 24px;
+  font-size: 16px;
+}
+
+.post-watchlisted-link {
+  color: #2ecc71;
 }
 
 .watchlist-delete-link {
-  font-size: 16px;
-  float:right;
+  color: #bdc3c7;
 }
 
 a.destroy {
-  color: #ccc;
+  color: grey;
 }
 
 a.watch {
@@ -154,8 +179,9 @@ a.watch:hover {
 
 input, textarea, select{
   width: 100%;
-  padding: 3px;
+  padding: 6px 0;
   font-size: 18px;
+  text-indent: 5px;
   margin: 8px 0;
   border: 1px solid #EDEBEB;
   border-radius: 3px;
@@ -166,11 +192,18 @@ textarea {
 }
 
 #search_form {
-  margin: 10px 15px 0 0;
+  margin: 18px 50px 0 0;
 }
+
+
 
 input#search_field {
   width: 150px;
+  padding: 2px 0;
+  text-indent: 5px;
+  font-size: 14px;
+  position: relative;
+  top: 3px;
 }
 
 .user-numbers {
@@ -198,6 +231,10 @@ border-right:1px solid #EDEBEB;
 
 #form_container h3 {
   margin: 0 0 12px 0;
+}
+
+#form_container {
+
 }
 
 #post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me {
@@ -264,6 +301,26 @@ border-right:1px solid #EDEBEB;
   height: 150px;
 }
 
+.delete_message {
+  position: absolute;
+  top: 40px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  color: #000;
+  z-index: 99999;
+  border-radius: 4px;
+  width: 400px;
+}
+
+ul.nav.navbar-nav {
+  position: relative;
+  top: 15px;
+}
+
+a.dropdown-toggle:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 993px) {
   #current_user_container {
     position: static;
@@ -279,6 +336,11 @@ border-right:1px solid #EDEBEB;
   }
   .container.main {
     margin-top: 170px;
+  }
+  #search_form {
+    margin: 0px 15px 0 0;
+    position: relative;
+    top: -5px;
   }
 
 }

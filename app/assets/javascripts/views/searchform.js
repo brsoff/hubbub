@@ -10,7 +10,7 @@ SearchFormView = Backbone.View.extend({
     return this;
   },
 
-  events: {
+  events: { 
     "click #search_submit": "executeSearch"
   },
 
@@ -22,8 +22,9 @@ SearchFormView = Backbone.View.extend({
       traditional: true,
       data: {name: search_input}
     })
-    $('#id_search').html("");
+    $('#id_search').empty();
     $('#id_search').html(Hubbub.searchUsersView.render().el);
+    Hubbub.searchUsersView.delegateEvents();
     }
 
 })

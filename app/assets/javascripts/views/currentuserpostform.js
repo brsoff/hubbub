@@ -19,7 +19,8 @@ PostFormView = Backbone.View.extend({
   },
 
   closeForm: function () {
-    $("#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me").hide(300);
+    $("#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me").hide(300).val("");
+    $("#item_name").val("");
   },
 
   revealForm: function () {
@@ -37,6 +38,7 @@ PostFormView = Backbone.View.extend({
 
     var newPost = new Post({
       message: $message,
+      user_id: Hubbub.currentuser.attributes.user_id,
       item_name: $item_name,
       item_url: $item_url,
       item_category: $item_type,

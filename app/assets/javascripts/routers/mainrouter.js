@@ -18,6 +18,8 @@ routes: {
     this.currentuserwatchlistsView = new CurrentUserWatchlistsView({collection: this.currentuserwatchlists})
     this.currentuserview = new CurrentUserView({model: this.currentuser});
     this.searchCollection = new SearchCollection();
+    this.searchFormView = new SearchFormView();
+    this.postFormView = new PostFormView();
   },
 
   index: function(){
@@ -30,20 +32,27 @@ routes: {
         $('#current_user_container').html(currentuser_view.render().el);
       }
     });
-    //get the current user's posts and put them into #posts element
-    this.currentuserposts.fetch();
-    $('#posts').html(this.currentuserpostsView.render().el);
 
     //get the current user's watchlist
-    this.currentuserwatchlists.fetch();
+    this.currentuserwatchlists.fetch({
+      success: function () {
 
-    // inititate the form where current user can create posts and put it in #form_container element
-    this.postFormView = new PostFormView();
-    $('#form_container').html(this.postFormView.render().el)
+        $("#posts, #watchlists, form_container, #search_form").empty();
 
-    // inititate the seaerch form where current user can search for other users and put it in #form_container element
-    this.searchFormView = new SearchFormView();
-    $('#search_form').html(this.searchFormView.render().el)
+        //get the current user's posts and put them into #posts element
+        Hubbub.currentuserposts.fetch();
+        $('#posts').html(Hubbub.currentuserpostsView.render().el);
+        // inititate the form where current user can create posts and put it in #form_container element
+        $('#form_container').html(Hubbub.postFormView.render().el)
+        // inititate the seaerch form where current user can search for other users and put it in #form_container element
+        $('#search_form').html(Hubbub.searchFormView.render().el)
+
+        Hubbub.currentuserpostsView.delegateEvents();
+        Hubbub.postFormView.delegateEvents();
+        Hubbub.searchFormView.delegateEvents();
+
+      }
+    });
     
   },
  // THIS LETS PEOPLE USE THE BACK BUTTON
@@ -62,15 +71,15 @@ routes: {
 
     //get the user's watchlist from rails, render it into #watchlists element
     this.currentuserwatchlists.fetch();
+    $("#watchlists, #form_container, #posts").empty();
     $('#watchlists').html(this.currentuserwatchlistsView.render().el);
-
-    //empty #posts element
-    $('#posts').empty();
+    Hubbub.currentuserwatchlistsView.delegateEvents();
+    // $('#form_container').html("");
+    // $('#posts').html("");
 
   },
 
   posts: function(){
-
     //similar to watchlist, this first thing will render the current user if someone refreshes the posts link, otherwise only the posts will show up and no user data
     var currentuser_view = this.currentuserview;
     this.currentuser.fetch({
@@ -79,12 +88,19 @@ routes: {
       }
     });
 
+    $('#search_form, #form_container, #watchlists').empty();
+    $('#search_form').html(Hubbub.searchFormView.render().el);
+    $('#form_container').html(Hubbub.postFormView.render().el);
     this.currentuserposts.fetch();
     $('#posts').html(this.currentuserpostsView.render().el);
-    $('#watchlists').empty();
+    Hubbub.currentuserpostsView.delegateEvents();
+    Hubbub.searchFormView.delegateEvents();
+    Hubbub.postFormView.delegateEvents();
   },
 
   show: function (username) {
+    //instantiate current user
+    this.currentuser.fetch();
     // to get individual users data we'll need to make an ajax call and pass in the user name. urls by username is probably a bit more exciting than urls by id, so we'll .where the username in the controller to find the right user
     $.ajax({
       url: "/userdata",
@@ -103,21 +119,34 @@ routes: {
         Hubbub.userpostsView = new UserPostsView({collection: Hubbub.userposts});
 
         Hubbub.userwatchlists = new UserWatchlistsCollection();
-        Hubbub.userwatchlistsView = new UserWatchlistsView({collection: Hubbub.userwatchlists})
 
         $('#current_user_container').html(Hubbub.userview.render().el);
-       
-        Hubbub.userposts.fetch({
-          data: $.param({
-              id: Hubbub.user.attributes.user_id
-            })
-        });
-        Hubbub.userwatchlists.fetch();
 
+        Hubbub.currentuserwatchlists.fetch({
+
+          success: function () {
+
+            Hubbub.userposts.fetch({
+             data: $.param({
+                id: Hubbub.user.attributes.user_id
+              })
+            });
+          }
+        })
+
+        Hubbub.userwatchlists.fetch({
+          success: function () {
+            Hubbub.userwatchlistsView = new UserWatchlistsView({collection: Hubbub.userwatchlists})
+          }
+        });
+
+        $('#posts, #form_container, #search_form, #watchlists').empty();
         $('#posts').html(Hubbub.userpostsView.render().el);
+        $('#search_form').html(Hubbub.searchFormView.render().el);
+        Hubbub.userpostsView.delegateEvents();
+        Hubbub.searchFormView.delegateEvents();
 
         //remove the post form, shouldnt be able to post from another user's page
-        $('#form_container').html("")
       }
     })
   }

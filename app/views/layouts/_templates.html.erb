@@ -1,40 +1,68 @@
 <script id="currentuserpostview" type="text/x-underscore-template" class="col-sm-3">
+{{ var watchlist_ids = []; }}
+{{ Hubbub.currentuserwatchlists.models.forEach(function (w) { watchlist_ids.push(w.attributes.id) }) }}
+
 <div class="category">
 {{= item_category}}
 </div>
 <h3>{{=item_name}} </h3>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
-<p>You said: "{{= message}}"</p>
+<p><a href="/#/users/{{= Hubbub.currentuser.attributes.username }}">You</a> said: <span class="message">{{= message}}</span></p>
 {{   }else{    }}
-<p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
+<p><a href="/#/users/{{= username }}">{{= username }}</a> says: <span class="message">"{{= message}}"</span></p>
 {{  }  }}
 
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
 
-<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
+<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"> Remove</i></a></div>
+
+{{  }else if (watchlist_ids.indexOf(id) != -1 )     {  }}
+
+<div class="post-watchlisted-link"><i class="fa fa-check"></i> Watchlisted</div>
 
 {{  }else{  }}
 
-<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"></i></a></div>
+<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"> Watchlist</i></a></div>
 
 {{   }  }}
 </script>
 
 <script id="userpostview" type="text/x-underscore-template" class="col-sm-3">
+
+{{ var watchlist_ids = []; }}
+{{ Hubbub.currentuserwatchlists.models.forEach(function (w) { watchlist_ids.push(w.attributes.id) }) }}
+
 <div class="category">
 {{= item_category}}
 </div>
 <h2>{{=item_name}} </h2>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
-<p>You said: "{{= message}}"</p>
+<p><a href="/#/users/{{= Hubbub.currentuser.attributes.username }}">You</a> said: <span class="message">{{= message}}</span></p>
 {{   }else{    }}
-<p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
+<p><a href="/#/users/{{= username }}">{{= username }}</a> says: <span class="message">{{= message}}</span></p>
 {{  }  }}
 
+
 <p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+
+{{console.log (Hubbub.currentuser.attributes.user_id + " " + user_id)}}
+
+{{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
+
+{{  }else if (watchlist_ids.indexOf(id) != -1 )     {  }}
+
+<div class="post-watchlisted-link"><i class="fa fa-check"></i> Watchlisted</div>
+
+{{  }else{  }}
+
+<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"> Watchlist</i></a></div>
+
+{{   }  }}
+
 </script>
 
 
@@ -47,7 +75,7 @@
     <p style="text-align:center"><img src="{{= avatar_url.avatar_url.url }}" /></p> 
     {{ } }}
     <h2>{{= name}}</h2>
-    <p>{{= username}}</p>
+    <p><a href="/#/users/{{= username}}">{{= username}}</a></p>
 
     <div class="col-md-12 user-numbers-container">
       <div class="col-md-4 user-numbers">Posts<br> <span class="number">{{= posts}}</span></div>
@@ -67,7 +95,7 @@
     <p style="text-align:center"><img src="{{= avatar_url.avatar_url.url }}" /></p> 
     {{ } }}
     <h2>{{= name}}</h2>
-    <p>{{= username}}</p>
+    <p><a href="/#/users/{{= username}}">{{= username}}</a></p>
 
     <div class="col-md-12 user-numbers-container">
       <div class="col-md-4 user-numbers">Posts<br> <span class="number">{{= posts}}</span></div>
@@ -107,7 +135,7 @@
 
 <script id="search_view" type="text/x-underscore-template">
   <input type="text" placeholder="search term" id="search_field">
-  <a href="#search" class="btn btn-default btn-sm" id="search_submit" data-toggle="modal">Search</a>
+  <a href="#search" class="btn btn-default btn-xs" id="search_submit" data-toggle="modal">Search</a>
 </script>
 
 

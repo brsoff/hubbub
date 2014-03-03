@@ -1,10 +1,7 @@
 CurrentUserPostsCollection = Backbone.Collection.extend({
 
-  //url to get posts of currentuser
-
   url: '/posts',
 
-  //model this collection will use
   model: Post,
 
   initialize: function(){

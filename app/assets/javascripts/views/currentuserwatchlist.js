@@ -16,11 +16,13 @@ CurrentUserWatchlistView = Backbone.View.extend({
   render: function (){
     this.$el.html(this.template(this.model.toJSON()));
     return this;
-
   },
 
   delete: function (){
-    this.model.destroy();
+    var self = this.model;
+    this.$el.fadeOut(300, function () {
+        self.destroy();
+    })
   },
 
   // edit: function (){

@@ -1,5 +1,7 @@
 Watchlist = Backbone.Model.extend({
   
-  url: "/watchlists"
+  // url: "/watchlists",
+
+  // urlRoot: "/watchlists"
 
 })

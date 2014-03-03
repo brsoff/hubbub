@@ -22,8 +22,28 @@ UserPostView = Backbone.View.extend({
     this.model.destroy();
   },
 
-  watch: function (){
-    Hubbub.userwatchlists.add(this.model).save()
+  // watch: function (){
+  //   Hubbub.userwatchlists.add(this.model).save()
+  // }
+
+  watch: function (e){
+    e.preventDefault();
+    var new_watchlist = new Watchlist(this.model.attributes);
+    Hubbub.currentuserwatchlists.add(new_watchlist);
+    var params = { post_id: this.model.attributes.id }
+
+    $.ajax({
+      url: "/watchlists",
+      data: params,
+      method: "post",
+      dataType: "json",
+      success: function (data) {
+        console.log(data)
+        $('#posts').empty();
+        $('#posts').html(Hubbub.userpostsView.render().el);
+        Hubbub.userpostsView.delegateEvents();
+      }
+    })
   }
 
 });

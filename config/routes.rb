@@ -4,7 +4,6 @@ WdiProject3::Application.routes.draw do
 
   resources :posts
   resources :users
-  # resources :items
   resources :watchlists
 
   devise_scope :user do
@@ -27,5 +26,5 @@ WdiProject3::Application.routes.draw do
 
   get "/userposts" => "posts#userposts"
 
-  get "/watchlists" => "watchlists#create"
+  # get "/watchlists" => "watchlists#create"
 end

@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.format_url(url)
-    if url.scan(/\Ahttp:\/\//) == "http:\/\/"
+    if url.scan(/\Ahttp:\/\//) == ["http:\/\/"]
       url
     else
       http = "http:\/\/"

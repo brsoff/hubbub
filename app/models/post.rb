@@ -20,7 +20,14 @@ class Post < ActiveRecord::Base
   end
 
   def self.add_post(params, user)
-    @post = Post.create(message: params[:message], user_id: user.id, item_name: params[:item_name], item_url: params[:item_url], item_category: params[:item_category], user_name: user.name, username: user.username)
+    url = params[:item_url]
+    if url.scan(/\Ahttp:\/\//) == "http:\/\/"
+      url
+    else
+      http = "http:\/\/"
+      url = url.split("").unshift(http).join("")
+    end
+    @post = Post.create(message: params[:message], user_id: user.id, item_name: params[:item_name], item_url: url, item_category: params[:item_category], user_name: user.name, username: user.username)
   end
 
 

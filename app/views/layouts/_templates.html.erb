@@ -13,7 +13,7 @@
 <p><a href="/#/users/{{= username }}">{{= username }}</a> says: <span class="message">"{{= message}}"</span></p>
 {{  }  }}
 
-<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p>Link: <a href={{= item_url}} target="_blank">{{=item_name}}</a></p>
 
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
 
@@ -47,7 +47,7 @@
 {{  }  }}
 
 
-<p>Link: <a href={{= item_url}}>{{=item_name}}</a></p>
+<p>Link: <a href={{= item_url}} target="_blank">{{=item_name}}</a></p>
 
 {{console.log (Hubbub.currentuser.attributes.user_id + " " + user_id)}}
 

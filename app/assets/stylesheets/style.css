@@ -75,10 +75,15 @@ color: yellow;
   overflow: auto;
 }
 
+#watchlists {
+  background: url("/assets/cork.jpg");
+  border: 2px solid #462727;
+}
+
 .eachpost {
   margin: 0 0 40px 0;
   height: 200px;
-  padding: 45px 10px 10px 30px;
+  padding: 55px 10px 10px 30px;
   position: relative;
   background: url("/assets/paper.png") no-repeat;
   font-size: 18px
@@ -99,6 +104,11 @@ span.message {
   margin: 10px 20px;
   padding: 10px;
   border: 1px solid #ccc;
+  width: 90%;
+  word-wrap: break-word;
+  height: 180px;
+  position: relative;
+  background: #fff;
 }
 
 .eachwatchlist h3 {
@@ -114,6 +124,15 @@ span.message {
   font-size: 22px;
   width:35px;
   height: 35px;
+}
+
+.pushpin {
+  position: absolute;
+  width: 25px;
+  height: 32px;
+  left: 60px;
+  top: -18px;
+  background: url("/assets/pushpin.png") no-repeat;
 }
 
 .category {
@@ -147,6 +166,9 @@ span.message {
 
 .watchlist-delete-link {
   color: #bdc3c7;
+  position: absolute;
+  top:2px;
+  right: 2px;
 }
 
 a.destroy {
@@ -343,5 +365,29 @@ a.dropdown-toggle:hover {
     top: -5px;
   }
 
+  .eachwatchlist {
+    width: 90%;
+    float: none;
+    margin: 0 auto;
+  }
+
+.eachwatchlist-inner {
+  margin: 30px 0;
+    width: 100%;
+    word-wrap: break-word;
+    position: relative;
+    height: 120px;
+  }
+      .pushpin {
+      left: 200px;
+    }
+
 }
+
+
+@media (max-width: 530px) {
+    .pushpin {
+      left: 100px;
+    }
+  }
 

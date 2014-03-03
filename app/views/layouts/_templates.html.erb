@@ -112,7 +112,7 @@
 <script id="post_form_view" type="text/x-underscore-template">
   <h3>Recommend something!</h3>
   <div id="form_container_inner">
-  <input type="text" placeholder="What would you like to recommend?" id="item_name">
+  <input type="text" maxlength="27" placeholder="What would you like to recommend?" id="item_name">
   <textarea placeholder="Why are you recommending it?" id="post_message" maxlength="70"></textarea>
   <select id="item_itemtype">
   <option value="">Choose the category...</option> //this needs a validation
@@ -128,7 +128,7 @@
   </select>
   <input type="text" placeholder="URL" id="item_url">
   <button class="btn btn-primary btn-md" id="post_submit_button">Submit</button>
-  <button class="btn btn-primary btn-sm" id="close-me">Hide</button>
+  <button class="btn btn-danger btn-md" id="close-me">Hide</button>
   </div>
 </script>
 
@@ -146,6 +146,7 @@
 <p><a href="/#/users/{{= username }}">{{= username }}</a> says: "{{= message}}"</p>
 Category: {{= item_category}}
 <div class="watchlist-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
+<div class="pushpin"></div>
 </div>
 </script>
 

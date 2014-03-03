@@ -45,6 +45,13 @@
 <div class="category">
 {{= item_category}}
 </div>
+<div class="post_image">
+{{ if (item_image_url) { }}
+<img src="{{= item_image_url}}" />
+{{ }else{ }}
+  <img src="assets/no_image_placeholder.png" />
+{{ } }}
+</div>
 <h2>{{=item_name}} </h2>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}

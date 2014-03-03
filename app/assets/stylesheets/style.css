@@ -263,7 +263,7 @@ border-right:1px solid #EDEBEB;
 
 }
 
-#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #close-me {
+#post_message, #item_url, #item_itemtype, #item_category, #post_submit_button, #item_image_url, #close-me {
   display: none;
 }
 

@@ -27,7 +27,7 @@ body {
 
 .navbar-inverse {
   /*background-color: #fff;*/
-    background: #666EFC;
+    background: #3498db;
   border-color: #fff;
   padding: 0;
   border-bottom: 1px solid #000;
@@ -149,7 +149,7 @@ span.message {
   top:-10px;
   right:60px;
   padding:18px 0 0 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   text-align:center;
   color: #fff;
@@ -382,7 +382,7 @@ a.dropdown-toggle:hover {
     width: 228px;
   }
   .container.main {
-    margin-top: 170px;
+    margin-top: 100px;
   }
   #search_form {
     margin: 0px 15px 0 0;

@@ -6,8 +6,7 @@ class PostsController < ApplicationController
     else
       @posts = ["You are not following anybody."]
     end
-
-    render json: @posts
+    render json: Post.order_posts(@posts)
   end
 
   def create

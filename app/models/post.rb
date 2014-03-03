@@ -41,4 +41,10 @@ class Post < ActiveRecord::Base
     end
     return url
   end
+
+  def self.order_posts(array)
+    array.sort_by do |post| 
+      post.created_at
+    end
+  end
 end

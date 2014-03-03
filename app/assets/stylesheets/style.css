@@ -84,6 +84,11 @@ color: yellow;
   border: 2px solid #462727;
 }
 
+#watchlists_holder h1 {
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
 .eachpost {
   margin: 0 0 40px 0;
   height: 200px;

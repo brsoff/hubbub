@@ -347,6 +347,20 @@ a.dropdown-toggle:hover {
   cursor: pointer;
 }
 
+.post_image img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 0 12px 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: 2px 2px 5px #f7f7f7;
+  -moz-box-shadow: 2px 2px 5px #f7f7f7;
+  -webkit-box-shadow: 2px 2px 5px #f7f7f7;
+}
+
 @media (max-width: 993px) {
   #current_user_container {
     position: static;

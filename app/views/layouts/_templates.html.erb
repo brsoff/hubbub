@@ -5,6 +5,20 @@
 <div class="category">
 {{= item_category}}
 </div>
+<div class="post_image">
+{{ if (item_image_url) { }}
+<img src="{{= item_image_url}}" />
+
+{{ }else{ }}
+
+{{ if (Hubbub.currentuser.attributes.avatar_url.avatar_url.url != "default.png") { }}
+        <img src="https://s3.amazonaws.com/Hubbub-WDI/{{= Hubbub.currentuser.attributes.avatar_url.avatar_url.url }}" />
+
+      {{ } else {  }}
+        <img src="assets/default.png" />
+        {{ } }}
+        {{ } }}
+</div>
 <h3>{{=item_name}} </h3>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}

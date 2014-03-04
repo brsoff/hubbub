@@ -45,8 +45,12 @@ class Post < ActiveRecord::Base
   end
 
   def self.order_posts(array)
-    @posts = array.sort_by &:created_at
-    @posts = @posts.reverse
-    @posts
+    # @posts = array.sort_by &:created_at
+    # @posts = @posts.reverse
+    # @posts
+
+    array.sort_by do |post|
+      post.created_at
+    end
   end
 end

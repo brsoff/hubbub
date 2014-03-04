@@ -52,7 +52,7 @@ CurrentUserPostView = Backbone.View.extend({
 
         var params = { post_id: object.attributes.id }
 
-        draggable.draggable.fadeOut(300);
+        // draggable.draggable.fadeOut(300);
 
         $.ajax({
           url: "/watchlists",

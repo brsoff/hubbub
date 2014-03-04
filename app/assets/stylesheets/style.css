@@ -82,6 +82,8 @@ color: yellow;
 #watchlists {
   background: url("/assets/cork.jpg");
   border: 3px solid #462727;
+  min-height: 244px;
+  overflow: visible;
 }
 
 #watchlists_holder h1 {
@@ -181,10 +183,12 @@ span.message {
 }
 
 a.destroy {
+  font-family: 'Oxygen', sans-serif;
   color: grey;
 }
 
 a.watch {
+  font-family: 'Oxygen', sans-serif;
   color: #000;
 }
 
@@ -278,7 +282,7 @@ border-right:1px solid #EDEBEB;
 #current_user_container {
   margin: 0 0 30px 0;
   position: fixed;
-  width: 25%;
+  width: 23%;
 }
 
 .btn {
@@ -369,10 +373,9 @@ a.dropdown-toggle:hover {
 }
 
 #trash {
-  width: 25%;
-  height: 250px;
+  width: 23%;
+  height: 130px;
   position: fixed;
-  background: #ccc;
   margin-top: 335px;
   border-radius: 6px;
 }
@@ -381,6 +384,25 @@ a.dropdown-toggle:hover {
   background: #e74c3c;
   border:6px solid #c0392b;
 }
+
+#trash-inner {
+  width: 128px;
+  margin: 0 auto;
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
 
 @media (max-width: 993px) {
   #current_user_container {

@@ -50,6 +50,7 @@ routes: {
         Hubbub.currentuserpostsView.delegateEvents();
         Hubbub.postFormView.delegateEvents();
         Hubbub.searchFormView.delegateEvents();
+        $("#trash").hide();
 
       }
     });
@@ -79,6 +80,7 @@ routes: {
     Hubbub.currentuserwatchlistsView.delegateEvents();
     // $('#form_container').html("");
     // $('#posts').html("");
+    $("#trash").show(300);
   },
 
   posts: function(){
@@ -98,6 +100,7 @@ routes: {
     Hubbub.currentuserpostsView.delegateEvents();
     Hubbub.searchFormView.delegateEvents();
     Hubbub.postFormView.delegateEvents();
+    $("#trash").hide();
   },
 
   show: function (username) {
@@ -147,6 +150,7 @@ routes: {
         $('#search_form').html(Hubbub.searchFormView.render().el);
         Hubbub.userpostsView.delegateEvents();
         Hubbub.searchFormView.delegateEvents();
+        $("#trash").hide();
 
         //remove the post form, shouldnt be able to post from another user's page
       }

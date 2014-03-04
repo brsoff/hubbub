@@ -7,11 +7,11 @@ CurrentUserWatchlistView = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
     this.template = _.template($('#watchlistview').html());
-    // this.$el.data(this.model)
+    this.$el.data(this.model)
     this.$el.attr("draggable", "true")
+    // this.$el.sortable();
     this.$el.draggable({
     cursor: "pointer",
-      helper: "clone",
       stack: "trash",
       container: "document",
       appendTo: 'body',
@@ -19,35 +19,25 @@ CurrentUserWatchlistView = Backbone.View.extend({
     });
     $("#trash").droppable({
       accept: ".eachwatchlist",
-      hoverClass: "trashing-hover"
-      // drop: function (event, ui) {
-      //   // self.doStopStuff(event, ui)
-      //   console.log("stuff")
-      // }
+      hoverClass: "trashing-hover",
+      drop: function (event, ui) {
+        self.doStopStuff(event, ui)
+        console.log("stuff")
+      }
     });
   },
 
-  // doStopStuff: function (droppable, draggable) {
-  //   var data = draggable.draggable.data();
-  //   var watchlist_id = data.attributes.id;
-  //   debugger
-  //   draggable.$el.fadeOut(300, function () {
-  //       draggable.destroy();
-  //   })
+  doStopStuff: function (droppable, draggable) {
+    var object = draggable.draggable.data();
 
-  // },
+    draggable.draggable.fadeOut(300, function () {
+        object.destroy()
+    })
 
-  events: {
-    'click .destroy': 'delete',
-    'click .update': 'edit',
-    'dragenter #trash': 'lilhead',
-    'drop #trash': 'delete',
-    'dragover #trash' : 'lilhead'
   },
 
-  lilhead: function (e) {
-    e.preventDefault();
-    console.log("stuff happening")
+  events: {
+    'click .destroy': 'delete'
   },
 
   render: function (){

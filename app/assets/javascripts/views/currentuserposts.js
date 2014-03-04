@@ -17,7 +17,7 @@ CurrentUserPostsView = Backbone.View.extend({
 
   addOne: function(postItem){
     var currentuserpostView = new CurrentUserPostView({model: postItem});
-    this.$el.prepend(currentuserpostView.render().$el.hide().fadeIn(500))
+    this.$el.prepend(currentuserpostView.render().$el)
   
   }
 });

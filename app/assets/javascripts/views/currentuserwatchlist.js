@@ -8,23 +8,29 @@ CurrentUserWatchlistView = Backbone.View.extend({
     this.listenTo(this.model, 'destroy', this.remove);
     this.template = _.template($('#watchlistview').html());
     this.$el.data(this.model)
-    this.$el.attr("draggable", "true")
-    // this.$el.sortable();
-    this.$el.draggable({
-    cursor: "pointer",
-      stack: "trash",
-      container: "document",
-      appendTo: 'body',
-      revert: 'invalid'
-    });
+
+    //if these are the current user's posts, can't be draggable\
+
+      this.$el.attr("draggable", "true")
+      this.$el.draggable({
+      cursor: "pointer",
+        stack: "trash",
+        container: "document",
+        appendTo: 'body',
+        revert: 'invalid',
+        opacity: .7
+      });
+
     $("#trash").droppable({
-      accept: ".eachwatchlist",
-      hoverClass: "trashing-hover",
-      drop: function (event, ui) {
-        self.doStopStuff(event, ui)
-        console.log("stuff")
-      }
+        accept: ".eachwatchlist",
+        hoverClass: "trashing-hover",
+        drop: function (event, ui) {
+          self.doStopStuff(event, ui)
+          console.log("stuff")
+        }
     });
+
+
   },
 
   doStopStuff: function (droppable, draggable) {
@@ -46,7 +52,6 @@ CurrentUserWatchlistView = Backbone.View.extend({
   },
 
   delete: function (){
-    console.log("deletd")
     var self = this.model;
     this.$el.fadeOut(300, function () {
         self.destroy();

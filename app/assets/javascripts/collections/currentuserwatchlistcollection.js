@@ -8,10 +8,17 @@ CurrentUserWatchlistsCollection = Backbone.Collection.extend({
 
   initialize: function(){
     this.on('remove', this.hideModel, this);
+    this.on('add', this.updateWatchlists);
+  },
+
+  updateWatchlists: function () {
+    $("#watchlist-count").html(Hubbub.currentuserwatchlists.length)
   },
 
   hideModel: function(model){
     model.trigger('hide');
+    $("#watchlist-count").html(Hubbub.currentuserwatchlists.length)
+    console.log("watchlist removd")
   },
 
   focusOnwatchlist: function(id) {

@@ -25,6 +25,12 @@ body {
   border-radius: 5px;
 }
 
+.this-is-you {
+  font-size: 18px;
+  position: relative;
+  top: 10px;
+}
+
 .navbar-inverse {
   /*background-color: #fff;*/
     background: #3498db;
@@ -436,13 +442,15 @@ a.dropdown-toggle:hover {
 
 #watchlist-count {
   position:absolute;
-  background: red;
+  background: #e74c3c;
   border-radius: 50%;
   height: 25px;
   width: 25px;
   border: 3px solid #fff;
   top: -14px;
   right: -11px;
+  color: #fff;
+  text-align: center;
 }
 
 .btn-primary {

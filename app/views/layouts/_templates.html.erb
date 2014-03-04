@@ -187,13 +187,20 @@ Category: {{= item_category}}
 <p>You have not entered a valid search term!</p>
 {{ } else { }}
 <div class="user_search_data" data-id="{{= user_id}}">
+<div id="search_result_image">
+{{ if (avatar_url.avatar_url.url == "default.png") { }}
+    <img src="assets/default.png" />
+    {{ } else { }}
+    <img src="{{= avatar_url.avatar_url.url }}" /> 
+    {{ } }}
+    </div>
   <h3>{{= name}}</h3>
   <p><a href="/#/users/{{= username }}">{{= username }}</a></p>
-  <div class="row">
-    <div class="col-md-3">Posts: {{= posts}}</a></div>
-    <div class="col-md-3">Followers: {{= followers}}</div>
-    <div class="col-md-3">Following: {{= followed_users}}</div>
-  </div>
+  <div class="col-md-12 user-numbers-container">
+      <div class="col-md-4 user-numbers">Posts<br> <span class="number">{{= posts}}</span></div>
+      <div class="col-md-4 user-numbers middle">Followers<br> <span class="number">{{= followers}}</span></div>
+      <div class="col-md-4 user-numbers">Following<br> <span class="number">{{= followed_users}}</span></div>
+    </div>
   </div>
 
   {{ var id_array = Hubbub.currentuser.attributes.followed_ids }}

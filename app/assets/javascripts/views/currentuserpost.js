@@ -23,10 +23,11 @@ CurrentUserPostView = Backbone.View.extend({
       this.$el.draggable({
       cursor: "pointer",
         stack: "trash",
+        helper: "clone",
         container: "document",
         appendTo: 'body',
         revert: 'invalid',
-        opacity: .5
+        opacity: .7
       });
       $("#add_watchlist").droppable({
         accept: ".eachpost",
@@ -41,7 +42,8 @@ CurrentUserPostView = Backbone.View.extend({
 
   },
 
-  doStopStuff: function (droppable, draggable) {
+  doStopStuff: function (e, draggable) {
+    e.preventDefault();
     var object = draggable.draggable.data();
 
     console.log("stuff happened")
@@ -59,10 +61,9 @@ CurrentUserPostView = Backbone.View.extend({
           dataType: "json",
           success: function (data) {
             console.log(data)
-            $('#posts').empty();
             Hubbub.currentuserwatchlists.fetch({
               success: function () {
-                $('#posts').html(Hubbub.currentuserpostsView.render().el);
+                $('#posts').empty().html(Hubbub.currentuserpostsView.render().el);
                 Hubbub.currentuserpostsView.delegateEvents();
               }
             });

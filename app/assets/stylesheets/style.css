@@ -376,17 +376,21 @@ a.dropdown-toggle:hover {
   -webkit-box-shadow: 2px 2px 5px #f7f7f7;
 }
 
-#trash {
+#trash, #add_watchlist {
   width: 23%;
-  height: 130px;
+  height: 190px;
   position: fixed;
-  margin-top: 335px;
+  margin-top: 390px;
   border-radius: 6px;
+  text-align:center;
+    color: #6E6E6E;
+  font-size: 16px;
 }
 
 .trashing-hover {
   background: #e74c3c;
   border:6px solid #c0392b;
+  color: #fff;
 }
 
 #trash-inner {
@@ -394,17 +398,11 @@ a.dropdown-toggle:hover {
   margin: 0 auto;
 }
 
-#add_watchlist {
-  width: 23%;
-  height: 130px;
-  position: fixed;
-  margin-top: 335px;
-  border-radius: 6px;
-}
 
 .add_watchlist-hover {
   background: lightgreen;
   border:6px solid green;
+  color: #fff;
 }
 
 #add_watchlist-inner {
@@ -425,6 +423,31 @@ a.dropdown-toggle:hover {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+#top-watchlist-link {
+  position: relative;
+  top: 16px;
+  left: -10px;
+}
+
+#top-watchlist-link a {
+  color: #fff;
+}
+
+#watchlist-count {
+  position:absolute;
+  background: red;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  border: 3px solid #fff;
+  top: -14px;
+  right: -11px;
+}
+
+.btn-primary {
+  background: #3498db;
+}
 
 @media (max-width: 993px) {
   #current_user_container {

@@ -18,7 +18,7 @@ CurrentUserWatchlistView = Backbone.View.extend({
         container: "document",
         appendTo: 'body',
         revert: 'invalid',
-        opacity: .5
+        opacity: .7
       });
 
     $("#trash").droppable({

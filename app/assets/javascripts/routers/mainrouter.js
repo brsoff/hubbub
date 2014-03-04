@@ -76,11 +76,9 @@ routes: {
     $("#watchlists_holder").append($watchlists);
     $('#watchlists').html(this.currentuserwatchlistsView.render().el);
     $("#watchlists_holder").prepend("<h1>Watchlist</h1>")
-
     Hubbub.currentuserwatchlistsView.delegateEvents();
     // $('#form_container').html("");
     // $('#posts').html("");
-
   },
 
   posts: function(){

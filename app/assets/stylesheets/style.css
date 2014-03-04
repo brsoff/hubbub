@@ -368,6 +368,20 @@ a.dropdown-toggle:hover {
   -webkit-box-shadow: 2px 2px 5px #f7f7f7;
 }
 
+#trash {
+  width: 25%;
+  height: 250px;
+  position: fixed;
+  background: #ccc;
+  margin-top: 335px;
+  border-radius: 6px;
+}
+
+.trashing-hover {
+  background: #e74c3c;
+  border:6px solid #c0392b;
+}
+
 @media (max-width: 993px) {
   #current_user_container {
     position: static;

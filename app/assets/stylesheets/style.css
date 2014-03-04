@@ -303,7 +303,7 @@ border-right:1px solid #EDEBEB;
 .user-info img {
   border-radius: 3px;
   border: 3px solid #EDEBEB;
-  height: 150px;
+  height: auto;
   width: 150px;
 }
 

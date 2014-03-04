@@ -25,6 +25,31 @@ body {
   border-radius: 5px;
 }
 
+#signed_out_container h1 {
+  font-size: 82px;
+}
+
+#signed_out_container {
+  text-align: center;
+  font-size: 36px;
+}
+
+#signed_out_container img {
+  margin: 40px 0;
+}
+
+#signed_out_container button {
+  font-size: 28px;
+  width: 35%;
+  margin-top: 30px;
+}
+
+#signed_out_container p {
+  width: 70%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
 .this-is-you {
   font-size: 18px;
   position: relative;
@@ -448,8 +473,9 @@ a.dropdown-toggle:hover {
   height: 25px;
   width: 25px;
   border: 3px solid #fff;
-  top: -14px;
-  right: -11px;
+  top: -18px;
+  right: -17px;
+  font-size: 14px;
   color: #fff;
   text-align: center;
 }

@@ -31,9 +31,11 @@ class Post < ActiveRecord::Base
   end
 
   def self.format_url(url)
-    if url.scan(/\Ahttp:\/\//) == ["http:\/\/"]
+    if url == ""
       url
-    elsif url == ""
+    elsif url == nil
+      nil
+    elsif url.scan(/\Ahttp:\/\//) == ["http:\/\/"]
       url
     else
       http = "http:\/\/"
@@ -43,8 +45,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.order_posts(array)
-    array.sort_by do |post| 
-      post.created_at
-    end
+    @posts = array.sort_by &:created_at
+    @posts = @posts.reverse
+    @posts
   end
 end

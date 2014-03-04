@@ -98,7 +98,7 @@ color: yellow;
 }
 
 .eachpost {
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
   height: 200px;
   padding: 55px 10px 10px 30px;
   position: relative;
@@ -230,7 +230,7 @@ input, textarea, select{
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background: #F7F2E0;
+  background: #fff;
 }
 
 textarea {
@@ -291,8 +291,7 @@ border-right:1px solid #EDEBEB;
 
 #current_user_container {
   margin: 0 0 30px 0;
-  position: fixed;
-  width: 23%;
+  width: 100%;
 }
 
 .btn {
@@ -310,6 +309,7 @@ border-right:1px solid #EDEBEB;
   border-radius: 3px;
   border: 3px solid #EDEBEB;
   height: auto;
+  max-height: 210px;
   width: 150px;
 }
 
@@ -339,9 +339,10 @@ border-right:1px solid #EDEBEB;
   float: right;
 }
 
-/*#left-sidebar {
+#left-sidebar-inner {
   position: fixed;
-}*/
+  width: 23%;
+}
 
 .modal-body img {
   width: 150px;
@@ -383,10 +384,10 @@ a.dropdown-toggle:hover {
 }
 
 #trash, #add_watchlist {
-  width: 23%;
+  width: 100%;
   height: 190px;
-  position: fixed;
-  margin-top: 390px;
+  /*position: fixed;*/
+  margin-top: 0;
   border-radius: 6px;
   text-align:center;
     color: #6E6E6E;
@@ -451,6 +452,7 @@ a.dropdown-toggle:hover {
   right: -11px;
   color: #fff;
   text-align: center;
+  box-shadow: 1px 1px 5px #f7f7f7;
 }
 
 .btn-primary {
@@ -478,6 +480,11 @@ a.dropdown-toggle:hover {
 
 @media (max-width: 993px) {
   #current_user_container {
+    position: static;
+    width: 100%;
+  }
+
+  #left-sidebar-inner {
     position: static;
     width: 100%;
   }

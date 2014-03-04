@@ -36,7 +36,7 @@ routes: {
     //get the current user's watchlist
     this.currentuserwatchlists.fetch({
       success: function () {
-
+        $("#watchlist-count").html(Hubbub.currentuserwatchlists.length)
         $("#posts, #watchlists_holder, form_container, #search_form").empty();
 
         //get the current user's posts and put them into #posts element

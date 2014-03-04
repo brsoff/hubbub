@@ -13,7 +13,8 @@ SearchUserView = Backbone.View.extend({
     "click .follow": "follow"
   },
 
-  follow: function(){
+  follow: function(e){
+    e.preventDefault();
     var current_user_id = Hubbub.currentuser.attributes.user_id
     var follow_id = $('.user_search_data').attr("data-id");
 
@@ -43,7 +44,8 @@ SearchUserView = Backbone.View.extend({
     })
   },
 
-  unfollow: function() {
+  unfollow: function(e) {
+    e.preventDefault();
     var current_user_id = Hubbub.currentuser.attributes.user_id;
     var unfollow_id = $('.user_search_data').attr("data-id");
     var unfollow_button = $('.user_search_data').find('.unfollow');

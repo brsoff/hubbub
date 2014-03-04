@@ -72,7 +72,7 @@ color: yellow;
   padding: 20px;
   border-radius: 4px;
   background: #fff;
-  overflow: auto;
+  overflow: visible;
 }
 
 #posts {
@@ -185,6 +185,10 @@ span.message {
 a.destroy {
   font-family: 'Oxygen', sans-serif;
   color: grey;
+}
+
+.watch {
+  font-family: 'Oxygen', sans-serif;
 }
 
 a.watch {
@@ -386,6 +390,24 @@ a.dropdown-toggle:hover {
 }
 
 #trash-inner {
+  width: 128px;
+  margin: 0 auto;
+}
+
+#add_watchlist {
+  width: 23%;
+  height: 130px;
+  position: fixed;
+  margin-top: 335px;
+  border-radius: 6px;
+}
+
+.add_watchlist-hover {
+  background: lightgreen;
+  border:6px solid green;
+}
+
+#add_watchlist-inner {
   width: 128px;
   margin: 0 auto;
 }

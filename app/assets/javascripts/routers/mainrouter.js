@@ -42,6 +42,7 @@ routes: {
         //get the current user's posts and put them into #posts element
         Hubbub.currentuserposts.fetch();
         $('#posts').html(Hubbub.currentuserpostsView.render().el);
+        $('#posts').prepend('<h2>Your Feed</h2>');
         // inititate the form where current user can create posts and put it in #form_container element
         $('#form_container').html(Hubbub.postFormView.render().el)
         // inititate the seaerch form where current user can search for other users and put it in #form_container element
@@ -155,6 +156,7 @@ routes: {
         Hubbub.searchFormView.delegateEvents();
         $("#add_watchlist").show();
         $("#trash").hide();
+        $('#posts').prepend("<h2>" + Hubbub.user.attributes.username + "'s posts</h2>");
 
         //remove the post form, shouldnt be able to post from another user's page
       }

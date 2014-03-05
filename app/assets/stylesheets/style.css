@@ -27,15 +27,18 @@ body {
 
 #signed_out_container h1 {
   font-size: 82px;
+  margin-top: 10px;
 }
 
 #signed_out_container {
   text-align: center;
   font-size: 36px;
+  position: relative;
+  top: -40px;
 }
 
 #signed_out_container img {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 #signed_out_container button {
@@ -108,6 +111,13 @@ color: yellow;
 
 #posts {
   padding: 0;
+}
+
+#posts h2 {
+  text-align: center;
+  margin: 0 0 25px 0;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid #ccc;
 }
 
 #watchlists {

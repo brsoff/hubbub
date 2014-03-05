@@ -19,6 +19,23 @@ class Post < ActiveRecord::Base
     return @posts
   end
 
+  def self.get_user_posts(user)
+    user = User.find(current_user.id)
+    following = user.followed_users
+    begin
+      following << user
+    rescue
+      puts "relationship already exists"
+    end
+    @posts = Array.new
+    following.each do |followed_user|
+      followed_user.posts.each do |post|
+        @posts << post
+      end
+    end
+    return @posts
+  end
+
   def self.add_post(params, user)
     web_url = Post.format_url(params[:item_url])
     image_url = Post.format_url(params[:item_image_url])

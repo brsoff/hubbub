@@ -24,7 +24,8 @@ class PostsController < ApplicationController
 
   def userposts
     user = User.find(params[:id].to_i)
-    @posts = Post.get_posts(user)
+    # @posts = Post.get_posts(user)
+    @posts = user.posts
 
     render json: @posts
   end

@@ -3,7 +3,6 @@ Post = Backbone.Model.extend({
     message: "",
     user_id: ""
 
-
   }
 
 })

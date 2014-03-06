@@ -14,9 +14,8 @@ CurrentUserWatchlistView = Backbone.View.extend({
       this.$el.attr("draggable", "true")
       this.$el.draggable({
       cursor: "pointer",
-        stack: "trash",
+        helper: "clone",
         container: "document",
-        appendTo: 'body',
         revert: 'invalid',
         opacity: .7
       });
@@ -24,6 +23,7 @@ CurrentUserWatchlistView = Backbone.View.extend({
     $("#trash").droppable({
         accept: ".eachwatchlist",
         hoverClass: "trashing-hover",
+        tolerance: "pointer",
         drop: function (event, ui) {
           self.doStopStuff(event, ui)
           console.log("stuff")

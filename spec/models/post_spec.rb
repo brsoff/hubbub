@@ -23,8 +23,7 @@ describe "Post model" do
   describe "#self.add_posts" do
     before do
       @current_user = FactoryGirl.create(:user)
-      new_post = FactoryGirl.create(:post)
-      @post = Post.add_post(new_post, @current_user)
+      @post = Post.add_post(FactoryGirl.create(:post), @current_user)
     end
 
     it "should add post to the database" do
@@ -41,15 +40,13 @@ describe "Post model" do
     before do
       ### create some fake users with fake posts and have the current user follow them
       current_user = FactoryGirl.create(:user)
-      new_post = FactoryGirl.create(:post)
       fake_user = FactoryGirl.create(:user, email: "example@example.com")
       fake_user2 = FactoryGirl.create(:user, email: "example2@example2.com")
       follow1 = FactoryGirl.create(:follow, followed_id: fake_user.id, follower_id: current_user.id)
       follow2 = FactoryGirl.create(:follow, followed_id: fake_user2.id, follower_id:current_user.id)
-      @post_1 = Post.add_post(new_post, fake_user)
+      @post_1 = Post.add_post(FactoryGirl.create(:post), fake_user)
       sleep 1
-      new_post_2 = FactoryGirl.create(:post)
-      @post_2 = Post.add_post(new_post_2, fake_user2)
+      @post_2 = Post.add_post(FactoryGirl.create(:post), fake_user2)
       @posts = Post.get_posts(current_user)
 
     end

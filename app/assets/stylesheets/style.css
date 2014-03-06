@@ -104,7 +104,6 @@ color: yellow;
 
 #posts, #watchlists {
   padding: 20px;
-  border-radius: 4px;
   background: #fff;
   overflow: auto;
 }
@@ -122,7 +121,7 @@ color: yellow;
 
 #watchlists {
   background: url("/assets/cork.jpg");
-  border: 3px solid #462727;
+  border: 3px solid #A37356;
   min-height: 244px;
 }
 
@@ -132,16 +131,26 @@ color: yellow;
 }
 
 .eachpost {
-  margin: 0 0 20px 0;
-  height: 200px;
-  padding: 55px 10px 10px 30px;
+  margin: 0;
+  height: 122px;
+  padding: 10px;
   position: relative;
-  background: url("/assets/paper.png") no-repeat;
-  font-size: 18px
+  font-size: 18px;
+  border: 1px solid #f7f7f7;
+  border-top: none;
+  word-wrap: break-word;
+}
+
+.eachpost:first-child {
+  border-top: 1px solid #f7f7f7;
+}
+
+.eachpost:nth-child(odd) {
+  background: #f7f7f7;
 }
 
 span.message {
-  font-family: 'Gloria Hallelujah', cursive;
+  
 }
 
 .eachwatchlist {
@@ -154,7 +163,7 @@ span.message {
 .eachwatchlist-inner {
   margin: 10px 20px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #f7f7f7;
   width: 90%;
   word-wrap: break-word;
   height: 180px;
@@ -188,27 +197,29 @@ span.message {
 
 .category {
   position: absolute;
-  top:-10px;
-  right:60px;
-  padding:18px 0 0 0;
-  font-size: 22px;
+  top: -1px;
+  right: -1px;
+  padding: 4px 12px;
+  font-size: 16px;
   font-weight: bold;
   text-align:center;
   color: #fff;
   text-shadow: 2px 2px 0px #000;
-  width: 180px;
-  height: 63px;
   text-transform: uppercase;
-  background: url("/assets/tape.png") no-repeat;
   font-family: 'Oxygen', sans-serif;
+  background: #3498db;
+}
+
+.dragging-post {
+  border: 1px solid #3498db;
 }
 
 .post-delete-link, .post-watchlist-link, .post-watchlisted-link {
   position: absolute;
   font-family: 'Oxygen', sans-serif;
-  bottom: 25px;
-  right: 25px;
-  font-size: 16px;
+  bottom: 5px;
+  right: 5px;
+  font-size: 14px;
 }
 
 .post-watchlisted-link {

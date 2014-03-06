@@ -12,19 +12,17 @@
   <img src="assets/no_image_placeholder.png" />
 {{ } }}
 </div>
-<h3>{{=item_name}} </h3>
+<h3><a href={{= item_url}} target="_blank">{{=item_name}}</a></h3>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
-<p><a href="/#/users/{{= Hubbub.currentuser.attributes.username }}">You</a> said: <span class="message">{{= message}}</span></p>
+<p><a href="/#/users/{{= Hubbub.currentuser.attributes.username }}">You</a> said: <span class="message">"{{= message}}"</span></p>
 {{   }else{    }}
 <p><a href="/#/users/{{= username }}">{{= username }}</a> says: <span class="message">"{{= message}}"</span></p>
 {{  }  }}
 
-<p>Link: <a href={{= item_url}} target="_blank">{{=item_name}}</a></p>
-
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
 
-<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"> Remove</i></a></div>
+<div class="post-delete-link"><a class='destroy'><i class="fa fa-times"></i></a></div>
 
 {{  }else if (watchlist_ids.indexOf(id) != -1 )     {  }}
 
@@ -32,7 +30,7 @@
 
 {{  }else{  }}
 
-<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"> Watchlist</i></a></div>
+<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"></i></a></div>
 
 {{   }  }}
 </script>
@@ -52,16 +50,13 @@
   <img src="assets/no_image_placeholder.png" />
 {{ } }}
 </div>
-<h3>{{=item_name}} </h3>
+<h3><a href={{= item_url}} target="_blank">{{=item_name}}</a></h3>
 
 {{ if (Hubbub.currentuser.attributes.user_id === user_id) {   }}
 <p><a href="/#/users/{{= Hubbub.currentuser.attributes.username }}">You</a> said: <span class="message">{{= message}}</span></p>
 {{   }else{    }}
 <p><a href="/#/users/{{= username }}">{{= username }}</a> says: <span class="message">{{= message}}</span></p>
 {{  }  }}
-
-
-<p>Link: <a href={{= item_url}} target="_blank">{{=item_name}}</a></p>
 
 
 {{ if ( Hubbub.currentuser.attributes.user_id === user_id )  {   }}
@@ -72,7 +67,7 @@
 
 {{  }else{  }}
 
-<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"> Watchlist</i></a></div>
+<div class="post-watchlist-link"><a class='watch'><i class="fa fa-plus"></i></a></div>
 
 {{   }  }}
 
@@ -137,7 +132,6 @@
 
 
 <script id="post_form_view" type="text/x-underscore-template">
-  <h3>Recommend something!</h3>
   <div id="form_container_inner">
   <input type="text" maxlength="27" placeholder="What would you like to recommend?" id="item_name">
   <textarea placeholder="Why are you recommending it?" id="post_message" maxlength="70"></textarea>

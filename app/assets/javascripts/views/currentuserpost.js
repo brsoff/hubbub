@@ -21,6 +21,12 @@ CurrentUserPostView = Backbone.View.extend({
 
       this.$el.attr("draggable", "true")
       this.$el.draggable({
+      drag: function () {
+        self.$el.addClass("dragging-post");
+      },
+      stop: function () {
+        self.$el.removeClass("dragging-post");
+      },
       cursor: "pointer",
         helper: "clone",
         container: "document",

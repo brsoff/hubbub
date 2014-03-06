@@ -27,18 +27,21 @@ body {
 
 #signed_out_container h1 {
   font-size: 82px;
-  margin-top: 10px;
+  margin: 40px 0 10px 0;
 }
 
 #signed_out_container {
   text-align: center;
-  font-size: 36px;
+  font-size: 26px;
   position: relative;
   top: -40px;
 }
 
 #signed_out_container img {
   margin: 20px 0;
+  width: 350px;
+  position: relative;
+  top: -17px;
 }
 
 #signed_out_container button {
@@ -211,7 +214,7 @@ span.message {
 }
 
 .dragging-post {
-  border: 1px solid #3498db;
+  border: 1px solid #3498db !important;
 }
 
 .post-delete-link, .post-watchlist-link, .post-watchlisted-link {

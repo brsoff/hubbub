@@ -18,8 +18,11 @@ FactoryGirl.define do
   end
 
   factory :follow do
-    followed_id 1
-    follower_id 2
+
+  end
+
+  factory :watchlist do
+
   end
 
 end

@@ -1,11 +1,8 @@
 UserView = Backbone.View.extend({
 
   initialize: function() {
-          _.bindAll(this, 'render');
-          if(this.model) {
-          this.model.on('change', this.render, this);
-          }
-         this.template = _.template($('#userview').html());
+    this.listenTo(this.model, 'change', this.render)
+    this.template = _.template($('#userview').html());
   },
 
   render: function () {

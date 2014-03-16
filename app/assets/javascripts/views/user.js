@@ -57,6 +57,7 @@ UserView = Backbone.View.extend({
   },
 
   unfollow: function(e) {
+    console.log("unfollow clicked")
     e.preventDefault();
     var current_user_id = Hubbub.currentuser.attributes.user_id;
     var unfollow_id = $('.user-info').attr("data-id");
@@ -72,23 +73,28 @@ UserView = Backbone.View.extend({
       data: params,
       dataType: "json",
       success: function(data){
+        console.log("this is the unfollow data")
+        console.log(data)
        $.ajax({
           url: "/userdata",
           data: {username: Hubbub.user.attributes.username},
           type: "get",
           dataType: "json",
           success: function (data) {
+            console.log("Did we get here?")
+            console.log(data)
             Hubbub.currentuser.fetch({
               success: function () {
-                Hubbub.currentuserposts.fetch({
-                  success: function () {
-                  Hubbub.user = new User (data)
-                  Hubbub.userview = new UserView({model: Hubbub.user});
-                  $("#current_user_container").empty();
-                  $("#current_user_container").html(Hubbub.userview.render().el)
-                  Hubbub.userview.delegateEvents();
-                  }
-                })
+                console.log('fetching')
+                console.log(Hubbub.currentuserposts)
+                Hubbub.currentuserposts.fetch();
+                Hubbub.user = new User (data)
+                Hubbub.userview = new UserView({model: Hubbub.user});
+                $("#current_user_container").empty();
+                $("#current_user_container").html(Hubbub.userview.render().el)
+                Hubbub.userview.delegateEvents();
+                  
+                
               }
             })
           } 

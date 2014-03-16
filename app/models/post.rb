@@ -5,11 +5,6 @@ class Post < ActiveRecord::Base
   def self.get_posts(current_user)
     user = User.find(current_user.id)
     following = user.followed_users
-    begin
-      following << user
-    rescue
-      puts "relationship already exists"
-    end
     @posts = Array.new
     following.each do |followed_user|
       followed_user.posts.each do |post|
@@ -22,11 +17,6 @@ class Post < ActiveRecord::Base
   def self.get_user_posts(user)
     user = User.find(current_user.id)
     following = user.followed_users
-    begin
-      following << user
-    rescue
-      puts "relationship already exists"
-    end
     @posts = Array.new
     following.each do |followed_user|
       followed_user.posts.each do |post|
